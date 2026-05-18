@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Confirmação de Presença - Eduarda 15 Anos</title>
+
+  <!-- Fonte elegante, fina, corporativa (SEM cursiva) -->
+  <link href="https://fonts.googleapis.com/css2?family=Raleway:wght@200;300;400;500&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --altura-normal: 345px;
+      --altura-ios: 260px;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+
+      background-image: url("https://ysmmcf.github.io/DudaGogh/Manual do Convidado_20260518_174630_0000.png");
+      background-size: cover;
+      background-position: center;
+    }
+
+    .confirmacao-box {
+      width: 86%;
+      max-width: 520px;
+      text-align: center;
+      padding: 22px;
+      border-radius: 18px;
+      margin-top: var(--altura-normal);
+    }
+
+    body.ios .confirmacao-box {
+      margin-top: var(--altura-ios);
+    }
+
+    .nome-label {
+      font-size: 16px;
+      color: #ffd700;
+      font-family: "Raleway", sans-serif;
+      font-weight: 300;
+      margin-bottom: 8px;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.85);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .confirmacao-box input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 12px;
+      border: none;
+      font-size: 14px;
+      margin-bottom: 8px;
+      outline: none;
+      text-align: center;
+      font-family: "Raleway", sans-serif;
+      font-weight: 300;
+    }
+
+    .pergunta {
+      font-size: 20px;
+      color: #ffd700;
+      font-family: "Raleway", sans-serif;
+      font-weight: 300;
+      margin-top: 8px;
+      margin-bottom: 18px;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.85);
+      line-height: 1.3;
+      letter-spacing: 1px;
+    }
+
+    .opcoes {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .btn-opcao {
+      width: 85%;
+      padding: 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255, 215, 0, 0.55);
+
+      font-size: 15px;
+      cursor: pointer;
+
+      font-family: "Raleway", sans-serif;
+      font-weight: 300;
+
+      color: #ffd700;
+      background: rgba(255, 255, 255, 0.10);
+
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+
+      transition: 0.2s;
+      text-shadow: 0 0 8px rgba(0, 0, 0, 0.75);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .btn-opcao:hover {
+      transform: scale(1.03);
+      background: rgba(255, 255, 255, 0.16);
+    }
+
+    .assinatura {
+      margin-top: 18px;
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.8);
+      font-family: "Raleway", sans-serif;
+      font-weight: 300;
+      text-shadow: 0 0 10px rgba(0, 0, 0, 0.85);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="confirmacao-box">
+
+    <div class="nome-label">Qual é o seu nome?</div>
+    <input type="text" id="nomePessoa" placeholder="Digite seu nome" />
+
+    <p class="pergunta">
+      Estará presente no aniversário de Eduarda?
+    </p>
+
+    <div class="opcoes">
+      <button class="btn-opcao" id="btnSim">Sim, estarei lá!</button>
+      <button class="btn-opcao" id="btnNao">Não poderei participar</button>
+    </div>
+
+  </div>
+
+  <script>
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
+
+    if (isIOS) {
+      document.body.classList.add("ios");
+    }
+
+    // LINK CORRETO DO SEU APPS SCRIPT
+    const LINK_PLANILHA = "https://script.google.com/macros/s/AKfycbxNRsOYlhQ4iuCxFl6pQdPU4bK3dOJlDa01NEZY-BjBpUd1VbLB8cGPnOU16A2Ua-tl/exec";
+
+    function salvarNaPlanilha(nome, resposta) {
+      fetch(LINK_PLANILHA, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          nome: nome,
+          resposta: resposta
+        })
+      })
+      .then(res => res.text())
+      .then(data => console.log("Resposta do Script:", data))
+      .catch(err => console.log("Erro ao salvar:", err));
+    }
+
+    function enviarWhatsApp(resposta) {
+      const nome = document.getElementById("nomePessoa").value.trim();
+
+      if (!nome) {
+        alert("Por favor, digite seu nome!");
+        return;
+      }
+
+      let mensagem = "";
+
+      if (resposta === "sim") {
+        mensagem = `Olá, sou ${nome}, estarei no aniversário de 15 anos de Eduarda!`;
+        salvarNaPlanilha(nome, "Sim");
+      } else {
+        mensagem = `Oi! Eu, ${nome}, não poderei comparecer ao aniversário de Eduarda!`;
+        salvarNaPlanilha(nome, "Não");
+      }
+
+      const numero = "5521968630344";
+      const link = `https://wa.me/${numero}?text=${encodeURIComponent(mensagem)}`;
+
+      window.open(link, "_blank");
+    }
+
+    document.getElementById("btnSim").addEventListener("click", () => enviarWhatsApp("sim"));
+    document.getElementById("btnNao").addEventListener("click", () => enviarWhatsApp("nao"));
+  </script>
+
+</body>
+</html>
