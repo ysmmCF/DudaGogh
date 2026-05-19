@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Convite Van Gogh</title>
+  <!-- Prévia do link (WhatsApp / Instagram / Facebook) -->
+<meta property="og:title" content="Convite Van Gogh - Duda 15 anos 💛🌻">
+<meta property="og:description" content="Você está convidado para um aniversário especial inspirado em Van Gogh ✨">
+<meta property="og:image" content="https://ysmmcf.github.io/DudaGogh/Capaconvite.png">
+<meta property="og:url" content="https://ysmmcf.github.io/DudaGogh/convitev1.html">
+<meta property="og:type" content="website">
+
+<!-- Twitter também -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Convite Van Gogh - Duda 15 anos 💛🌻">
+<meta name="twitter:description" content="Você está convidado para um aniversário especial inspirado em Van Gogh ✨">
+<meta name="twitter:image" content="https://ysmmcf.github.io/DudaGogh/Capaconvite.png">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      overflow-x: hidden;
+      overflow-y: auto;
+      background: black;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    /* CONTADOR FIXO - CANTO SUPERIOR DIREITO */
+    .contador-topo {
+      position: fixed;
+      top: 12px;
+      right: 12px;
+      z-index: 9999;
+
+      background: #f7c500;
+      color: #0b2d66;
+
+      padding: 10px 18px;
+      border-radius: 999px;
+
+      font-size: 13px;
+      font-weight: 300;
+      letter-spacing: 1px;
+
+      box-shadow: 0 6px 18px rgba(0,0,0,0.5);
+
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 1s ease, transform 1s ease;
+
+      transform: translateY(-15px);
+      cursor: pointer;
+    }
+
+    .contador-topo.mostrar {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateY(0px);
+    }
+
+    /* Conteúdo do convite */
+    .conteudo {
+      width: 100%;
+      opacity: 0;
+      transition: opacity 1.2s ease;
+      z-index: 1;
+      position: relative;
+    }
+
+    .conteudo.mostrar {
+      opacity: 1;
+    }
+
+    .conteudo img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Menu de botões */
+    .menu-botoes {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      align-items: flex-start;
+      margin-top: -350px;
+      padding-left: 30px;
+      padding-bottom: 80px;
+    }
+
+    .botao-menu {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .icone-bolinha {
+      width: 52px;
+      height: 52px;
+      background: #f7c500;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.5);
+      transition: 0.2s ease;
+    }
+
+    .icone-bolinha i {
+      font-size: 20px;
+      color: #0b2d66;
+    }
+
+    .texto-botao {
+      font-size: 15px;
+      font-weight: 300;
+      letter-spacing: 1px;
+      color: #f7c500;
+      text-shadow: 0 0 10px rgba(0,0,0,0.6);
+      transition: 0.2s ease;
+    }
+
+    .botao-menu:hover .icone-bolinha {
+      transform: scale(1.08);
+    }
+
+    .botao-menu:hover .texto-botao {
+      opacity: 0.85;
+    }
+
+    /* Entrada */
+    .entrada {
+      position: fixed;
+      inset: 0;
+      z-index: 10;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .lado-direito {
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 50%;
+      height: 100%;
+      overflow: hidden;
+      z-index: 2;
+      transition: transform 3.5s ease, opacity 1.2s ease;
+    }
+
+    .lado-direito video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .lado-esquerdo {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 92%;
+      height: 100%;
+      background: url("https://ysmmcf.github.io/DudaGogh/EntraSeloOk.png") center/cover no-repeat;
+      z-index: 5;
+      transition: transform 3.5s ease, opacity 1.2s ease;
+    }
+
+    .entrada.abrir .lado-esquerdo {
+      transform: translateX(-100%);
+      opacity: 0;
+    }
+
+    .entrada.abrir .lado-direito {
+      transform: translateX(100%);
+      opacity: 0;
+    }
+
+    .texto-clique {
+      position: absolute;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 20;
+      color: white;
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-shadow: 0 0 10px rgba(0,0,0,0.9);
+      animation: piscar 1.3s infinite;
+      font-weight: 300;
+    }
+
+    @keyframes piscar {
+      0% { opacity: 1; }
+      50% { opacity: 0.3; }
+      100% { opacity: 1; }
+    }
+
+    /* POPUP PADRÃO */
+    .popup {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.65);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.5s ease;
+    }
+
+    .popup.mostrar {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .popup-box {
+      width: 85%;
+      max-width: 340px;
+      background: #0b2d66;
+      border-radius: 22px;
+      padding: 22px;
+      text-align: center;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.6);
+      border: 2px solid #f7c500;
+      position: relative;
+    }
+
+    .popup-box h2 {
+      color: #f7c500;
+      font-size: 18px;
+      font-weight: 300;
+      letter-spacing: 1px;
+      margin-bottom: 10px;
+    }
+
+    .popup-box p {
+      color: white;
+      font-size: 13px;
+      font-weight: 300;
+      line-height: 1.4;
+      margin-bottom: 18px;
+    }
+
+    .popup-box button {
+      background: #f7c500;
+      border: none;
+      padding: 10px 18px;
+      border-radius: 999px;
+      cursor: pointer;
+      font-weight: 400;
+      color: #0b2d66;
+      font-size: 13px;
+      transition: 0.2s ease;
+    }
+
+    .popup-box button:hover {
+      transform: scale(1.05);
+      opacity: 0.95;
+    }
+
+    /* BOTÃO FECHAR (X) */
+    .fechar-x {
+      position: absolute;
+      top: 12px;
+      right: 14px;
+      font-size: 18px;
+      color: #f7c500;
+      cursor: pointer;
+      font-weight: 400;
+    }
+
+    /* POPUP CONTAGEM */
+    .popup-contagem h1 {
+      color: #f7c500;
+      font-size: 20px;
+      font-weight: 300;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
+    }
+
+    .data-caixa {
+      margin: 14px 0;
+      color: white;
+      font-weight: 300;
+      line-height: 1.4;
+      font-size: 14px;
+    }
+
+    .data-caixa .numero {
+      font-size: 38px;
+      font-weight: 400;
+      color: #f7c500;
+      line-height: 1;
+    }
+
+    .data-caixa .mes {
+      font-size: 16px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: white;
+    }
+
+    .data-caixa .dia {
+      font-size: 14px;
+      opacity: 0.95;
+    }
+
+    .contagem-popup {
+      margin-top: 12px;
+      margin-bottom: 18px;
+      color: #f7c500;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+
+    /* CONFETE GIRASSOL */
+    .girassol {
+      position: fixed;
+      top: -40px;
+      font-size: 22px;
+      animation: cair 3.5s linear forwards;
+      z-index: 99999;
+      pointer-events: none;
+    }
+
+    @keyframes cair {
+      0% {
+        transform: translateY(-50px) rotate(0deg);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CONTADOR FIXO -->
+  <div class="contador-topo" id="contadorTopo">
+    <span id="contadorTexto">Carregando...</span>
+  </div>
+
+  <!-- Música -->
+  <audio id="musica" loop>
+    <source src="https://ysmmcf.github.io/DudaGogh/Vienna, Billy Joel (Instrumental) - Juana (youtube).mp3" type="audio/mpeg">
+    Seu navegador não suporta áudio.
+  </audio>
+
+  <!-- Conteúdo -->
+  <div class="conteudo" id="conteudo">
+    <img src="https://ysmmcf.github.io/DudaGogh/115 anos_20260518_180312_0000.png" alt="Convite Van Gogh">
+
+    <div class="menu-botoes" id="menuBotoes">
+      <a href="https://maps.app.goo.gl/wuyE24QjGV9MUS6B8?g_st=ac" target="_blank" class="botao-menu">
+        <div class="icone-bolinha"><i class="fa-solid fa-location-dot"></i></div>
+        <div class="texto-botao">Localização</div>
+      </a>
+
+      <a href="https://ysmmcf.github.io/DudaGogh/Manualdoconvidadovangogh.png" target="_blank" class="botao-menu">
+        <div class="icone-bolinha"><i class="fa-solid fa-book-open"></i></div>
+        <div class="texto-botao">Manual do Convidado</div>
+      </a>
+
+      <a href="https://ysmmcf.github.io/DudaGogh/Fundosugestao.png" target="_blank" class="botao-menu">
+        <div class="icone-bolinha"><i class="fa-solid fa-gift"></i></div>
+        <div class="texto-botao">Sugestão de Presentes</div>
+      </a>
+
+      <a href="https://ysmmcf.github.io/DudaGogh/Confirmacao.html" target="_blank" class="botao-menu">
+        <div class="icone-bolinha"><i class="fa-solid fa-check"></i></div>
+        <div class="texto-botao">Confirmar Presença</div>
+      </a>
+
+      <a href="https://ysmmcf.github.io/DudaGogh/Dresscode.png" target="_blank" class="botao-menu">
+        <div class="icone-bolinha"><i class="fa-solid fa-user-tie"></i></div>
+        <div class="texto-botao">Dress Code</div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Entrada -->
+  <div class="entrada" id="entrada">
+    <div class="lado-direito">
+      <video autoplay muted loop playsinline>
+        <source src="https://ysmmcf.github.io/DudaGogh/Videovangogh.mp4" type="video/mp4">
+      </video>
+    </div>
+
+    <div class="lado-esquerdo"></div>
+    <div class="texto-clique">CLIQUE PARA ENTRAR</div>
+  </div>
+
+  <!-- POPUP AVISO -->
+  <div class="popup" id="popup">
+    <div class="popup-box">
+      <div class="fechar-x" id="fecharPopupX">✕</div>
+      <h2>💛 Aviso</h2>
+      <p>
+        Role para baixo para ver o convite completo e use os botões para acessar as informações.
+        <br><br>
+        <b style="color:#f7c500;">Confirme presença até o dia 25/11!</b>
+      </p>
+      <button id="fecharPopup">Entendi</button>
+    </div>
+  </div>
+
+  <!-- POPUP CONTAGEM -->
+  <div class="popup" id="popupContagem">
+    <div class="popup-box popup-contagem">
+      <div class="fechar-x" id="fecharContagemX">✕</div>
+
+      <h1>Duda faz 15 anos!</h1>
+
+      <div class="data-caixa">
+        <div class="numero">10</div>
+        <div class="mes">Dezembro</div>
+        <div class="dia">Quinta-feira — 19 horas</div>
+      </div>
+
+      <div class="contagem-popup" id="contagemGrande">
+        Carregando contagem...
+      </div>
+
+      <button id="btnParabens">Parabéns!</button>
+    </div>
+  </div>
+
+  <script>
+    const entrada = document.getElementById("entrada");
+    const conteudo = document.getElementById("conteudo");
+    const musica = document.getElementById("musica");
+
+    const popup = document.getElementById("popup");
+    const fecharPopup = document.getElementById("fecharPopup");
+    const fecharPopupX = document.getElementById("fecharPopupX");
+
+    const menuBotoes = document.getElementById("menuBotoes");
+
+    const contadorTopo = document.getElementById("contadorTopo");
+    const contadorTexto = document.getElementById("contadorTexto");
+
+    const popupContagem = document.getElementById("popupContagem");
+    const fecharContagemX = document.getElementById("fecharContagemX");
+    const contagemGrande = document.getElementById("contagemGrande");
+    const btnParabens = document.getElementById("btnParabens");
+
+    // Detectar iOS
+    const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+    let iosOffset = 80;
+
+    if (isIOS) {
+      menuBotoes.style.marginTop = `calc(-350px + ${iosOffset}px)`;
+    }
+
+    // Data do evento
+    const dataEvento = new Date(2026, 11, 10, 19, 0, 0);
+
+    // Contagem regressiva
+    function atualizarContador() {
+      const agora = new Date();
+      const diferenca = dataEvento - agora;
+
+      if (diferenca <= 0) {
+        contadorTexto.innerHTML = "✨ Hoje é o grande dia! ✨";
+        contagemGrande.innerHTML = "✨ Hoje é o grande dia! ✨";
+        return;
+      }
+
+      const dias = Math.floor(diferenca / (1000 * 60 * 60 * 24));
+      const horas = Math.floor((diferenca / (1000 * 60 * 60)) % 24);
+      const minutos = Math.floor((diferenca / (1000 * 60)) % 60);
+      const segundos = Math.floor((diferenca / 1000) % 60);
+
+      contadorTexto.innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
+      contagemGrande.innerHTML = `⏳ ${dias} dias, ${horas} horas, ${minutos} min e ${segundos} seg`;
+    }
+
+    atualizarContador();
+    setInterval(atualizarContador, 1000);
+
+    // Função para pular a entrada (quando já passou uma vez)
+    function pularEntrada() {
+      entrada.style.display = "none";
+      conteudo.classList.add("mostrar");
+      contadorTopo.classList.add("mostrar");
+    }
+
+    // Se já passou pela entrada antes, não mostra de novo
+    if (sessionStorage.getItem("entradaJaFoi") === "sim") {
+      pularEntrada();
+    }
+
+    // Abrir convite (primeira vez)
+    entrada.addEventListener("click", () => {
+
+      sessionStorage.setItem("entradaJaFoi", "sim");
+
+      musica.play().catch((err) => {
+        console.log("Erro ao tocar música:", err);
+      });
+
+      entrada.classList.add("abrir");
+      conteudo.classList.add("mostrar");
+
+      setTimeout(() => {
+        popup.classList.add("mostrar");
+      }, 4000);
+
+      setTimeout(() => {
+        contadorTopo.classList.add("mostrar");
+      }, 6000);
+
+      setTimeout(() => {
+        entrada.style.display = "none";
+      }, 2600);
+    });
+
+    // Fechar popup aviso
+    fecharPopup.addEventListener("click", () => popup.classList.remove("mostrar"));
+    fecharPopupX.addEventListener("click", () => popup.classList.remove("mostrar"));
+
+    popup.addEventListener("click", (e) => {
+      if (e.target === popup) popup.classList.remove("mostrar");
+    });
+
+    // Abrir popup contagem ao clicar na pílula
+    contadorTopo.addEventListener("click", () => {
+      popupContagem.classList.add("mostrar");
+    });
+
+    // Fechar popup contagem
+    fecharContagemX.addEventListener("click", () => {
+      popupContagem.classList.remove("mostrar");
+    });
+
+    popupContagem.addEventListener("click", (e) => {
+      if (e.target === popupContagem) popupContagem.classList.remove("mostrar");
+    });
+
+    // Girassóis caindo
+    function soltarGirassois() {
+      for (let i = 0; i < 25; i++) {
+        const flor = document.createElement("div");
+        flor.classList.add("girassol");
+        flor.innerHTML = "🌻";
+
+        flor.style.left = Math.random() * 100 + "vw";
+        flor.style.animationDuration = (Math.random() * 1.5 + 2.5) + "s";
+        flor.style.fontSize = (Math.random() * 12 + 16) + "px";
+
+        document.body.appendChild(flor);
+
+        setTimeout(() => {
+          flor.remove();
+        }, 4000);
+      }
+    }
+
+    btnParabens.addEventListener("click", () => {
+      soltarGirassois();
+    });
+  </script>
+
+</body>
+</html>
