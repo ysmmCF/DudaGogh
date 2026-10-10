@@ -1,3 +1,4 @@
+
 <!doctype html>
 <html lang="pt-BR">
 <head>
@@ -6,169 +7,852 @@
   <meta name="theme-color" content="#071936">
   <meta name="description" content="Sugestões de presentes para Eduarda: ideias organizadas por categoria para ajudar na escolha.">
   <title>Sugestões de Presentes | Eduarda</title>
+
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Montserrat:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
   <style>
-    :root{--navy:#071936;--navy-2:#0a2147;--blue:#174675;--gold:#dcb94d;--gold-light:#f0d77b;--cream:#f6f1df;--muted:rgba(246,241,223,.78);--line:rgba(240,215,123,.42);--panel:rgba(4,20,46,.58);--serif:"Cormorant Garamond",Georgia,serif;--sans:"Montserrat",Arial,sans-serif}
-    *{box-sizing:border-box;margin:0;padding:0}
-    html{scroll-behavior:smooth}
-    body{min-height:100vh;overflow-x:hidden;color:var(--cream);font-family:var(--sans);background:var(--navy);isolation:isolate}
-    body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background-image:linear-gradient(180deg,rgba(3,13,32,.48) 0%,rgba(3,13,32,.66) 52%,rgba(3,13,32,.78) 100%),url("https://commons.wikimedia.org/wiki/Special:FilePath/Starry_Night.webp?width=1600");background-size:cover;background-position:center center;background-repeat:no-repeat}
-    button{font:inherit}
-    button:focus-visible,a:focus-visible,[tabindex]:focus-visible{outline:2px solid var(--gold-light);outline-offset:4px}
-    .site{width:min(1120px,92%);margin:auto;padding:34px 0 100px}
-    .topline{display:flex;justify-content:center;align-items:center;gap:12px;margin-bottom:25px;color:var(--gold-light);font-size:10px;letter-spacing:3px;text-transform:uppercase}
-    .topline:before,.topline:after{content:"";width:34px;height:1px;background:var(--line)}
-    .page{display:none;animation:appear .38s ease both}
-    .page.active{display:block}
-    @keyframes appear{from{opacity:0;transform:translateY(9px)}to{opacity:1;transform:translateY(0)}}
-    .home-header{text-align:center;max-width:760px;margin:0 auto 34px}
-    .eyebrow{font-size:10px;letter-spacing:2.5px;text-transform:uppercase;color:var(--gold-light);margin-bottom:13px}
-    .home-header h1,.page-header h2{font:500 clamp(42px,7vw,68px)/.98 var(--serif);color:var(--gold-light);text-shadow:0 3px 18px #0002}
-    .home-header h1{margin-bottom:18px}
-    .home-header p,.page-header p{font-size:13px;line-height:1.9;font-weight:300;color:var(--muted)}
-    .general-info{max-width:780px;margin:0 auto 40px;padding:23px 28px;text-align:center;border:1px solid var(--line);border-radius:14px;background:rgba(5,23,52,.34);box-shadow:0 14px 38px #00000012}
-    .general-info h2,.tips-title{font:600 28px/1.1 var(--serif);color:var(--gold-light);margin-bottom:9px}
-    .general-info p{font-size:12px;line-height:1.9;color:var(--muted);font-weight:300}
-    .section-label{display:flex;align-items:center;gap:14px;color:var(--gold-light);font:600 23px var(--serif);margin:0 0 17px}
-    .section-label:after{content:"";height:1px;background:var(--line);flex:1}
-    .categories{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:15px}
-    .category{position:relative;display:flex;min-height:190px;flex-direction:column;align-items:center;justify-content:center;padding:17px 12px;border:1px solid var(--line);border-radius:13px;background:rgba(4,23,54,.43);cursor:pointer;color:inherit;transition:transform .25s,border-color .25s,background .25s,box-shadow .25s}
-    .category:before{content:"";position:absolute;inset:5px;border:1px solid #ffffff08;border-radius:9px;pointer-events:none}
-    .category:hover{transform:translateY(-4px);background:rgba(20,62,111,.55);border-color:var(--gold-light);box-shadow:0 12px 28px #0002}
-    .category img{width:112px;height:105px;object-fit:contain;margin-bottom:8px;transition:transform .25s}
-    .category:hover img{transform:scale(1.04)}
-    .category-name{font:600 21px/1.1 var(--serif);color:var(--gold-light);text-align:center}
-    .pix-symbol{width:91px;height:91px;display:grid;place-items:center;margin-bottom:14px;border:1px solid var(--line);border-radius:50%;font:600 30px var(--serif);color:var(--gold-light);letter-spacing:1px;background:#f0d77b08}
-    .pix-name{font:600 21px var(--serif);color:var(--gold-light)}
-    .bottom-area{display:flex;justify-content:center;margin-top:34px}
-    .primary-button{min-height:52px;padding:0 30px;border:1px solid var(--gold-light);border-radius:30px;background:linear-gradient(135deg,#f0d77b,#c6a13c);color:var(--navy);font:600 22px var(--serif);cursor:pointer;box-shadow:0 8px 25px #0002;transition:transform .2s,filter .2s}
-    .primary-button:hover{transform:translateY(-3px);filter:brightness(1.04)}
-    .back-button{display:inline-flex;align-items:center;gap:9px;margin:0 0 26px;padding:10px 16px;border:1px solid var(--line);border-radius:24px;background:#05183766;color:var(--gold-light);font-size:11px;cursor:pointer;transition:.2s}
-    .back-button:hover{background:var(--gold);color:var(--navy)}
-    .page-header{text-align:center;margin:0 auto 28px}
-    .page-header h2{font-size:clamp(40px,6vw,55px);margin-bottom:12px}
-    .tips{max-width:760px;margin:0 auto 32px;padding:22px 25px;border:1px solid var(--line);border-left:3px solid var(--gold);border-radius:0 13px 13px 0;background:rgba(5,24,55,.34)}
-    .tips-title{font-size:25px}
-    .tips p{font-size:12px;line-height:1.9;color:var(--muted);font-weight:300;margin:3px 0}
-    .tips strong{font-weight:600;color:var(--gold-light)}
-    .gifts{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
-    .gift{overflow:hidden;border:1px solid var(--line);border-radius:13px;background:rgba(5,24,55,.48);transition:transform .25s,border-color .25s,box-shadow .25s}
-    .gift:hover{transform:translateY(-3px);border-color:var(--gold-light);box-shadow:0 12px 25px #0002}
-    .gift-image{height:235px;padding:12px;display:flex;align-items:center;justify-content:center;background:rgba(246,241,223,.96);color:#6d6a60;position:relative}
-    .gift-image img{width:100%;height:100%;object-fit:contain}
-    .image-error{display:none;font-size:11px;color:#7d714f;text-align:center}
-    .gift-image.image-failed .image-error{display:block}
-    .image-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:9px;border:1px dashed #b8a56e;color:#7d714f;text-align:center;padding:12px}
-    .image-placeholder svg{width:35px;height:35px;opacity:.75}
-    .image-placeholder span{font-size:10px;line-height:1.6;max-width:180px}
-    .gift-name{min-height:61px;display:flex;align-items:center;justify-content:center;text-align:center;padding:12px;border-top:1px solid var(--line);font:600 21px/1.2 var(--serif);color:var(--gold-light)}
-    .gift-note{padding:0 14px 15px;text-align:center;font-size:10px;line-height:1.7;color:var(--muted)}
-    .more-page-intro{max-width:660px;margin:0 auto 28px;text-align:center;font-size:12px;line-height:1.9;color:var(--muted)}
-    .footer-note{text-align:center;margin-top:45px;padding-top:20px;border-top:1px solid #f0d77b25;font-size:10px;line-height:1.8;color:#f6f1df8a}
-    .invitation-back{position:fixed;z-index:900;left:50%;bottom:max(20px,env(safe-area-inset-bottom));transform:translateX(-50%);display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:46px;padding:11px 23px;border:1px solid rgba(240,215,123,.72);border-radius:30px;background:rgba(7,25,54,.94);color:var(--gold-light);font-family:var(--sans);font-size:10px;font-weight:600;letter-spacing:1.2px;text-transform:uppercase;text-decoration:none;white-space:nowrap;box-shadow:0 5px 22px rgba(0,0,0,.3);backdrop-filter:blur(8px);-webkit-tap-highlight-color:transparent;transition:background .25s,border-color .25s,box-shadow .25s}
-    .invitation-back:hover{background:rgba(23,70,117,.96);border-color:var(--gold-light);box-shadow:0 7px 25px rgba(0,0,0,.38)}
-    .invitation-back:active{background:var(--navy-2)}
-    .back-arrow{font-size:17px;line-height:1}
-    .overlay{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:18px;background:#020a19c9;backdrop-filter:blur(6px)}
-    .overlay.active{display:flex}
-    .pix-modal{position:relative;width:min(420px,100%);padding:36px 26px 28px;text-align:center;border:1px solid var(--gold-light);border-radius:17px;background:linear-gradient(145deg,#143f70f7,#051837fc);box-shadow:0 25px 70px #0007;animation:modal .25s ease}
-    @keyframes modal{from{opacity:0;transform:translateY(8px) scale(.98)}to{opacity:1;transform:none}}
-    .close{position:absolute;top:9px;right:12px;width:34px;height:34px;border:0;background:transparent;color:var(--gold-light);font-size:26px;cursor:pointer}
-    .pix-modal h2{font:500 34px var(--serif);color:var(--gold-light);margin-bottom:9px}
-    .pix-modal p{font-size:12px;line-height:1.8;color:var(--muted);margin-bottom:20px}
-    .pix-key{padding:14px 8px;border:1px dashed var(--line);border-radius:9px;background:#ffffff08;color:var(--gold-light);font-size:16px;letter-spacing:.5px;margin-bottom:14px;overflow-wrap:anywhere}
-    .copy-button{padding:11px 22px;border:1px solid var(--gold-light);border-radius:24px;background:#dcb94ddd;color:var(--navy);font-size:11px;font-weight:700;cursor:pointer}
-    .copy-button.copied{background:#b8d7b1;border-color:#b8d7b1}
-    .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
-    @media(max-width:900px){.categories{grid-template-columns:repeat(3,minmax(0,1fr))}.gifts{grid-template-columns:repeat(2,minmax(0,1fr))}}
-    @media(max-width:600px){.site{width:91%;padding:25px 0 100px}.topline{margin-bottom:21px;font-size:9px}.home-header{margin-bottom:27px}.home-header h1{font-size:45px}.home-header p{font-size:11px}.general-info{padding:20px 17px;margin-bottom:30px}.general-info h2{font-size:25px}.general-info p{font-size:11px}.categories{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.category{min-height:160px;padding:11px 8px}.category img{width:88px;height:84px}.category-name,.pix-name{font-size:19px}.pix-symbol{width:76px;height:76px;font-size:27px;margin-bottom:10px}.bottom-area{margin-top:28px}.primary-button{width:min(290px,100%);font-size:21px}.page-header{margin-bottom:23px}.page-header h2{font-size:42px}.page-header p{font-size:11px}.tips{padding:18px 18px;margin-bottom:24px}.tips p{font-size:11px}.gifts{gap:11px}.gift-image{height:165px;padding:8px}.gift-name{font-size:18px;min-height:59px;padding:9px}.gift-note{padding:0 9px 12px}.back-button{margin-bottom:22px}.invitation-back{bottom:max(16px,env(safe-area-inset-bottom));min-height:44px;padding:10px 20px;font-size:9px}}
-    @media(max-width:360px){.category{min-height:145px}.category img{width:76px;height:73px}.category-name,.pix-name{font-size:17px}.gift-image{height:145px}.gift-name{font-size:16px}.gifts{gap:8px}}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+    :root {
+      --navy: #071936;
+      --navy-2: #0a2147;
+      --blue: #174675;
+      --gold: #dcb94d;
+      --gold-light: #f0d77b;
+      --cream: #f6f1df;
+      --muted: rgba(246,241,223,.78);
+      --line: rgba(240,215,123,.42);
+      --panel: rgba(4,20,46,.58);
+      --serif: "Cormorant Garamond", Georgia, serif;
+      --sans: "Montserrat", Arial, sans-serif;
+    }
 
-    
-/* Botão X para voltar ao convite */
-.invitation-back {
-  position: fixed;
-  z-index: 1000;
-  top: max(16px, env(safe-area-inset-top));
-  left: max(16px, env(safe-area-inset-left));
-  right: auto;
-  bottom: auto;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  width: 44px;
-  height: 44px;
-  min-height: 44px;
-  padding: 0;
-  gap: 0;
+    html {
+      scroll-behavior: smooth;
+    }
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    body {
+      min-height: 100vh;
+      overflow-x: hidden;
+      color: var(--cream);
+      font-family: var(--sans);
+      background: var(--navy);
+      isolation: isolate;
+    }
 
-  transform: none;
-  border: 1px solid rgba(240, 215, 123, 0.8);
-  border-radius: 50%;
-  background: rgba(7, 25, 54, 0.94);
-  color: var(--gold-light);
+    body:before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      background-image:
+        linear-gradient(
+          180deg,
+          rgba(3,13,32,.48) 0%,
+          rgba(3,13,32,.66) 52%,
+          rgba(3,13,32,.78) 100%
+        ),
+        url("https://commons.wikimedia.org/wiki/Special:FilePath/Starry_Night.webp?width=1600");
+      background-size: cover;
+      background-position: center center;
+      background-repeat: no-repeat;
+    }
 
-  font-family: var(--sans);
-  font-size: 29px;
-  font-weight: 300;
-  line-height: 1;
-  letter-spacing: 0;
-  text-transform: none;
-  text-decoration: none;
-  white-space: nowrap;
+    button {
+      font: inherit;
+    }
 
-  box-shadow: 0 5px 22px rgba(0, 0, 0, 0.3);
-  backdrop-filter: blur(8px);
-  -webkit-tap-highlight-color: transparent;
-}
+    button:focus-visible,
+    a:focus-visible,
+    [tabindex]:focus-visible {
+      outline: 2px solid var(--gold-light);
+      outline-offset: 4px;
+    }
 
-.invitation-back:hover {
-  background: rgba(23, 70, 117, 0.96);
-  border-color: var(--gold-light);
-}
+    .site {
+      width: min(1120px, 92%);
+      margin: auto;
+      padding: 34px 0 100px;
+    }
 
-.invitation-back:active {
-  background: var(--navy-2);
-  transform: scale(0.94);
-}
+    .topline {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 25px;
+      color: var(--gold-light);
+      font-size: 10px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
 
-.invitation-back .back-arrow {
-  display: none;
-}
+    .topline:before,
+    .topline:after {
+      content: "";
+      width: 34px;
+      height: 1px;
+      background: var(--line);
+    }
 
+    .page {
+      display: none;
+      animation: appear .38s ease both;
+    }
+
+    .page.active {
+      display: block;
+    }
+
+    @keyframes appear {
+      from {
+        opacity: 0;
+        transform: translateY(9px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .home-header {
+      text-align: center;
+      max-width: 760px;
+      margin: 0 auto 34px;
+    }
+
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold-light);
+      margin-bottom: 13px;
+    }
+
+    .home-header h1,
+    .page-header h2 {
+      font: 500 clamp(42px,7vw,68px)/.98 var(--serif);
+      color: var(--gold-light);
+      text-shadow: 0 3px 18px #0002;
+    }
+
+    .home-header h1 {
+      margin-bottom: 18px;
+    }
+
+    .home-header p,
+    .page-header p {
+      font-size: 13px;
+      line-height: 1.9;
+      font-weight: 300;
+      color: var(--muted);
+    }
+
+    .general-info {
+      max-width: 780px;
+      margin: 0 auto 40px;
+      padding: 23px 28px;
+      text-align: center;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(5,23,52,.34);
+      box-shadow: 0 14px 38px #00000012;
+    }
+
+    .general-info h2,
+    .tips-title {
+      font: 600 28px/1.1 var(--serif);
+      color: var(--gold-light);
+      margin-bottom: 9px;
+    }
+
+    .general-info p {
+      font-size: 12px;
+      line-height: 1.9;
+      color: var(--muted);
+      font-weight: 300;
+    }
+
+    .section-label {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--gold-light);
+      font: 600 23px var(--serif);
+      margin: 0 0 17px;
+    }
+
+    .section-label:after {
+      content: "";
+      height: 1px;
+      background: var(--line);
+      flex: 1;
+    }
+
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(4,minmax(0,1fr));
+      gap: 15px;
+    }
+
+    .category {
+      position: relative;
+      display: flex;
+      min-height: 190px;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 17px 12px;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: rgba(4,23,54,.43);
+      cursor: pointer;
+      color: inherit;
+      transition: transform .25s,border-color .25s,background .25s,box-shadow .25s;
+    }
+
+    .category:before {
+      content: "";
+      position: absolute;
+      inset: 5px;
+      border: 1px solid #ffffff08;
+      border-radius: 9px;
+      pointer-events: none;
+    }
+
+    .category:hover {
+      transform: translateY(-4px);
+      background: rgba(20,62,111,.55);
+      border-color: var(--gold-light);
+      box-shadow: 0 12px 28px #0002;
+    }
+
+    .category img {
+      width: 112px;
+      height: 105px;
+      object-fit: contain;
+      margin-bottom: 8px;
+      transition: transform .25s;
+    }
+
+    .category:hover img {
+      transform: scale(1.04);
+    }
+
+    .category-name {
+      font: 600 21px/1.1 var(--serif);
+      color: var(--gold-light);
+      text-align: center;
+    }
+
+    .pix-symbol {
+      width: 91px;
+      height: 91px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 14px;
+      border: 1px solid var(--line);
+      border-radius: 50%;
+      font: 600 30px var(--serif);
+      color: var(--gold-light);
+      letter-spacing: 1px;
+      background: #f0d77b08;
+    }
+
+    .pix-name {
+      font: 600 21px var(--serif);
+      color: var(--gold-light);
+    }
+
+    .bottom-area {
+      display: flex;
+      justify-content: center;
+      margin-top: 34px;
+    }
+
+    .primary-button {
+      min-height: 52px;
+      padding: 0 30px;
+      border: 1px solid var(--gold-light);
+      border-radius: 30px;
+      background: linear-gradient(135deg,#f0d77b,#c6a13c);
+      color: var(--navy);
+      font: 600 22px var(--serif);
+      cursor: pointer;
+      box-shadow: 0 8px 25px #0002;
+      transition: transform .2s,filter .2s;
+    }
+
+    .primary-button:hover {
+      transform: translateY(-3px);
+      filter: brightness(1.04);
+    }
+
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      margin: 0 0 26px;
+      padding: 10px 16px;
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      background: #05183766;
+      color: var(--gold-light);
+      font-size: 11px;
+      cursor: pointer;
+      transition: .2s;
+    }
+
+    .back-button:hover {
+      background: var(--gold);
+      color: var(--navy);
+    }
+
+    .page-header {
+      text-align: center;
+      margin: 0 auto 28px;
+    }
+
+    .page-header h2 {
+      font-size: clamp(40px,6vw,55px);
+      margin-bottom: 12px;
+    }
+
+    .tips {
+      max-width: 760px;
+      margin: 0 auto 32px;
+      padding: 22px 25px;
+      border: 1px solid var(--line);
+      border-left: 3px solid var(--gold);
+      border-radius: 0 13px 13px 0;
+      background: rgba(5,24,55,.34);
+    }
+
+    .tips-title {
+      font-size: 25px;
+    }
+
+    .tips p {
+      font-size: 12px;
+      line-height: 1.9;
+      color: var(--muted);
+      font-weight: 300;
+      margin: 3px 0;
+    }
+
+    .tips strong {
+      font-weight: 600;
+      color: var(--gold-light);
+    }
+
+    .gifts {
+      display: grid;
+      grid-template-columns: repeat(3,minmax(0,1fr));
+      gap: 18px;
+    }
+
+    .gift {
+      overflow: hidden;
+      border: 1px solid var(--line);
+      border-radius: 13px;
+      background: rgba(5,24,55,.48);
+      transition: transform .25s,border-color .25s,box-shadow .25s;
+    }
+
+    .gift:hover {
+      transform: translateY(-3px);
+      border-color: var(--gold-light);
+      box-shadow: 0 12px 25px #0002;
+    }
+
+    .gift-image {
+      height: 235px;
+      padding: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(246,241,223,.96);
+      color: #6d6a60;
+      position: relative;
+    }
+
+    .gift-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .image-error {
+      display: none;
+      font-size: 11px;
+      color: #7d714f;
+      text-align: center;
+    }
+
+    .gift-image.image-failed .image-error {
+      display: block;
+    }
+
+    .image-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border: 1px dashed #b8a56e;
+      color: #7d714f;
+      text-align: center;
+      padding: 12px;
+    }
+
+    .image-placeholder svg {
+      width: 35px;
+      height: 35px;
+      opacity: .75;
+    }
+
+    .image-placeholder span {
+      font-size: 10px;
+      line-height: 1.6;
+      max-width: 180px;
+    }
+
+    .gift-name {
+      min-height: 61px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 12px;
+      border-top: 1px solid var(--line);
+      font: 600 21px/1.2 var(--serif);
+      color: var(--gold-light);
+    }
+
+    .gift-note {
+      padding: 0 14px 15px;
+      text-align: center;
+      font-size: 10px;
+      line-height: 1.7;
+      color: var(--muted);
+    }
+
+    .more-page-intro {
+      max-width: 660px;
+      margin: 0 auto 28px;
+      text-align: center;
+      font-size: 12px;
+      line-height: 1.9;
+      color: var(--muted);
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 45px;
+      padding-top: 20px;
+      border-top: 1px solid #f0d77b25;
+      font-size: 10px;
+      line-height: 1.8;
+      color: #f6f1df8a;
+    }
+
+    /* Botão X corrigido: círculo fixo, sem sublinhado e com o mesmo estilo das outras páginas */
+    .invitation-back,
+    .invitation-back:link,
+    .invitation-back:visited,
+    .invitation-back:hover,
+    .invitation-back:active {
+      position: fixed !important;
+      z-index: 1100;
+      top: max(16px, env(safe-area-inset-top));
+      left: max(16px, env(safe-area-inset-left));
+      right: auto;
+      bottom: auto;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      width: 44px;
+      min-width: 44px;
+      max-width: 44px;
+      height: 44px;
+      min-height: 44px;
+      max-height: 44px;
+
+      margin: 0;
+      padding: 0;
+      gap: 0;
+      flex: 0 0 44px;
+
+      transform: none;
+      border: 1px solid rgba(240,215,123,.8);
+      border-radius: 50%;
+      background: rgba(8,13,34,.92);
+
+      color: #f3e5ab;
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 29px;
+      font-weight: 300;
+      line-height: 1;
+      letter-spacing: 0;
+      text-align: center;
+      text-indent: 0;
+      text-transform: none;
+
+      text-decoration: none !important;
+      text-decoration-line: none !important;
+      text-decoration-thickness: auto;
+      text-underline-offset: 0;
+
+      white-space: nowrap;
+      overflow: hidden;
+      box-shadow: 0 5px 22px rgba(0,0,0,.3);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      -webkit-tap-highlight-color: transparent;
+      appearance: none;
+      -webkit-appearance: none;
+      cursor: pointer;
+      transition: background .2s,border-color .2s,box-shadow .2s;
+    }
+
+    .invitation-back::before,
+    .invitation-back::after {
+      content: none !important;
+      display: none !important;
+    }
+
+    .invitation-back:hover {
+      background: rgba(23,70,117,.96);
+      border-color: #f3e5ab;
+      color: #f3e5ab;
+    }
+
+    .invitation-back:active {
+      background: var(--navy-2);
+    }
+
+    .invitation-back .back-arrow {
+      display: none;
+    }
+
+    .overlay {
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 18px;
+      background: #020a19c9;
+      backdrop-filter: blur(6px);
+    }
+
+    .overlay.active {
+      display: flex;
+    }
+
+    .pix-modal {
+      position: relative;
+      width: min(420px,100%);
+      padding: 36px 26px 28px;
+      text-align: center;
+      border: 1px solid var(--gold-light);
+      border-radius: 17px;
+      background: linear-gradient(145deg,#143f70f7,#051837fc);
+      box-shadow: 0 25px 70px #0007;
+      animation: modal .25s ease;
+    }
+
+    @keyframes modal {
+      from {
+        opacity: 0;
+        transform: translateY(8px) scale(.98);
+      }
+      to {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    .close {
+      position: absolute;
+      top: 9px;
+      right: 12px;
+      width: 34px;
+      height: 34px;
+      border: 0;
+      background: transparent;
+      color: var(--gold-light);
+      font-size: 26px;
+      cursor: pointer;
+    }
+
+    .pix-modal h2 {
+      font: 500 34px var(--serif);
+      color: var(--gold-light);
+      margin-bottom: 9px;
+    }
+
+    .pix-modal p {
+      font-size: 12px;
+      line-height: 1.8;
+      color: var(--muted);
+      margin-bottom: 20px;
+    }
+
+    .pix-key {
+      padding: 14px 8px;
+      border: 1px dashed var(--line);
+      border-radius: 9px;
+      background: #ffffff08;
+      color: var(--gold-light);
+      font-size: 16px;
+      letter-spacing: .5px;
+      margin-bottom: 14px;
+      overflow-wrap: anywhere;
+    }
+
+    .copy-button {
+      padding: 11px 22px;
+      border: 1px solid var(--gold-light);
+      border-radius: 24px;
+      background: #dcb94ddd;
+      color: var(--navy);
+      font-size: 11px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    .copy-button.copied {
+      background: #b8d7b1;
+      border-color: #b8d7b1;
+    }
+
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    @media(max-width:900px) {
+      .categories {
+        grid-template-columns: repeat(3,minmax(0,1fr));
+      }
+
+      .gifts {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+      }
+    }
+
+    @media(max-width:600px) {
+      .site {
+        width: 91%;
+        padding: 25px 0 100px;
+      }
+
+      .topline {
+        margin-bottom: 21px;
+        font-size: 9px;
+      }
+
+      .home-header {
+        margin-bottom: 27px;
+      }
+
+      .home-header h1 {
+        font-size: 45px;
+      }
+
+      .home-header p {
+        font-size: 11px;
+      }
+
+      .general-info {
+        padding: 20px 17px;
+        margin-bottom: 30px;
+      }
+
+      .general-info h2 {
+        font-size: 25px;
+      }
+
+      .general-info p {
+        font-size: 11px;
+      }
+
+      .categories {
+        grid-template-columns: repeat(2,minmax(0,1fr));
+        gap: 11px;
+      }
+
+      .category {
+        min-height: 160px;
+        padding: 11px 8px;
+      }
+
+      .category img {
+        width: 88px;
+        height: 84px;
+      }
+
+      .category-name,
+      .pix-name {
+        font-size: 19px;
+      }
+
+      .pix-symbol {
+        width: 76px;
+        height: 76px;
+        font-size: 27px;
+        margin-bottom: 10px;
+      }
+
+      .bottom-area {
+        margin-top: 28px;
+      }
+
+      .primary-button {
+        width: min(290px,100%);
+        font-size: 21px;
+      }
+
+      .page-header {
+        margin-bottom: 23px;
+      }
+
+      .page-header h2 {
+        font-size: 42px;
+      }
+
+      .page-header p {
+        font-size: 11px;
+      }
+
+      .tips {
+        padding: 18px;
+        margin-bottom: 24px;
+      }
+
+      .tips p {
+        font-size: 11px;
+      }
+
+      .gifts {
+        gap: 11px;
+      }
+
+      .gift-image {
+        height: 165px;
+        padding: 8px;
+      }
+
+      .gift-name {
+        font-size: 18px;
+        min-height: 59px;
+        padding: 9px;
+      }
+
+      .gift-note {
+        padding: 0 9px 12px;
+      }
+
+      .back-button {
+        margin-bottom: 22px;
+      }
+    }
+
+    @media(max-width:360px) {
+      .category {
+        min-height: 145px;
+      }
+
+      .category img {
+        width: 76px;
+        height: 73px;
+      }
+
+      .category-name,
+      .pix-name {
+        font-size: 17px;
+      }
+
+      .gift-image {
+        height: 145px;
+      }
+
+      .gift-name {
+        font-size: 16px;
+      }
+
+      .gifts {
+        gap: 8px;
+      }
+    }
+
+    @media(prefers-reduced-motion:reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
+      }
+    }
   </style>
 </head>
+
 <body>
-<a
-  class="invitation-back"
-  href="convite.html"
-  id="backToInvitation"
-  data-back-to-invitation
-  aria-label="Fechar e voltar ao convite"
-  title="Voltar ao convite"
->
-  ×
-</a>
+  <a
+    class="invitation-back"
+    href="convite.html"
+    id="backToInvitation"
+    data-back-to-invitation
+    aria-label="Fechar e voltar ao convite"
+    title="Voltar ao convite"
+  >×</a>
 
   <main class="site">
     <div class="topline">Eduarda · 15 anos</div>
+
     <section id="homePage" class="page active" aria-labelledby="homeTitle">
       <header class="home-header">
         <div class="eyebrow">Uma pequena lista de sugestões</div>
         <h1 id="homeTitle">Sugestões de<br>Presentes</h1>
         <p>Algumas ideias para facilitar a escolha de quem quiser me presentear. Escolha uma categoria para conhecer referências de estilos e opções.</p>
       </header>
-      <div class="general-info"><h2>Para escolher com carinho</h2><p>As sugestões são apenas uma forma de compartilhar um pouco dos meus gostos e ajudar na escolha. Não é necessário seguir exatamente as opções apresentadas.</p></div>
+
+      <div class="general-info">
+        <h2>Para escolher com carinho</h2>
+        <p>As sugestões são apenas uma forma de compartilhar um pouco dos meus gostos e ajudar na escolha. Não é necessário seguir exatamente as opções apresentadas.</p>
+      </div>
+
       <h2 class="section-label">Explore as categorias</h2>
       <div class="categories" id="categoriesGrid"></div>
-      <div class="bottom-area"><button class="primary-button" type="button" onclick="openPage('moreIdeasPage')">Mais ideias</button></div>
+
+      <div class="bottom-area">
+        <button class="primary-button" type="button" onclick="openPage('moreIdeasPage')">Mais ideias</button>
+      </div>
+
       <footer class="footer-note">Escolha livremente o que fizer sentido para você. Sua presença também é muito especial.</footer>
     </section>
+
     <div id="pagesContainer"></div>
   </main>
 
@@ -186,9 +870,10 @@
   <script>
     const backToInvitation = document.getElementById('backToInvitation');
 
-    backToInvitation.addEventListener('click', function (event) {
+    backToInvitation.addEventListener('click', function(event) {
       if (window.parent !== window) {
         event.preventDefault();
+
         window.parent.postMessage(
           { type: 'DUDA_GOGH_CLOSE_INTERNAL_PAGE' },
           window.location.origin
@@ -198,25 +883,139 @@
 
     const IMAGE_BASE = 'https://ysmmcf.github.io/DudaGogh/';
     const imageUrl = filename => IMAGE_BASE + encodeURIComponent(filename);
-    const makeItems = (prefix, count, label, exceptions = {}) => Array.from({length: count}, (_, i) => {
-      const number = i + 1;
-      const filename = exceptions[number] || `${prefix}${number}.jpg`;
-      return { name: `${label} ${number}`, image: imageUrl(filename), filename };
-    });
+
+    const makeItems = (prefix, count, label, exceptions = {}) =>
+      Array.from({length: count}, (_, i) => {
+        const number = i + 1;
+        const filename = exceptions[number] || `${prefix}${number}.jpg`;
+        return {
+          name: `${label} ${number}`,
+          image: imageUrl(filename),
+          filename
+        };
+      });
 
     const categories = [
-      {id:'blusasPage', name:'Blusas', image:imageUrl('blusasgoght.png'), description:'Algumas referências de estilos que gosto.', tips:[['Tamanho','M'],['Estilo','Delicado, casual e confortável.'],['O que evitar','Cores neon e roupas muito decotadas.']]},
-      {id:'calcadosPage', name:'Calçados', image:imageUrl('calcadosgoght.png'), description:'Modelos confortáveis para diferentes ocasiões.', tips:[['Número','36'],['Preferência','Tênis, sapatilhas e sandálias.']]},
-      {id:'bolsasPage', name:'Bolsas', image:imageUrl('bolsagoght.png'), description:'Modelos bonitos e práticos para o dia a dia.', tips:[['Estilo','Delicado, clássico ou casual.'],['Cores','Preto, branco, marrom, tons claros ou neutros.']]},
-      {id:'moletonsPage', name:'Moletons', image:imageUrl('moletomgoght.png'), description:'Para aqueles dias em que conforto é prioridade.', tips:[['Tamanho','M'],['Estilo','Confortável e soltinho.']]},
-      {id:'casacosPage', name:'Casacos', image:imageUrl('casacogoght.png'), description:'Opções quentinhas e confortáveis para completar o visual.', tips:[['Tamanho','M'],['Estilo','Confortável, versátil e fácil de combinar.']]},
-      {id:'cosmeticosPage', name:'Cosméticos', image:imageUrl('cosmeticosgoght.png'), description:'Produtos de beleza e cuidados pessoais.', tips:[['Preferências','Gloss, brilho labial, hidratantes, perfumes e cuidados pessoais.'],['Sugestão','Produtos versáteis também são ótimas opções.']]},
-      {id:'calcasPage', name:'Calças', image:imageUrl('calcagoght.png'), description:'Modelos versáteis para combinar com diferentes looks.', tips:[['Tamanho','36'],['Preferência','Modelos confortáveis para diferentes ocasiões.']]},
-      {id:'livrosPage', name:'Livros', image:imageUrl('livrosgoght.png'), description:'Uma história nova para me acompanhar.', tips:[['Gêneros','Clássicos, romance, fantasia e ficção.'],['Preferência','Histórias envolventes e personagens marcantes.']]},
-      {id:'vestidosPage', name:'Vestidos', image:imageUrl('vestidogoght.png'), description:'Modelos delicados e confortáveis.', tips:[['Tamanho','P'],['Estilo','Delicado, romântico e confortável.']]},
-      {id:'vangoghPage', name:'Itens Van Gogh', image:imageUrl('Vgoght.png'), description:'Um pouco de arte para trazer ao dia a dia.', tips:[['Preferência','Itens inspirados nas obras e pinturas de Van Gogh.'],['Referência','A Noite Estrelada é uma das minhas favoritas.']]},
-      {id:'shortsPage', name:'Shorts', image:imageUrl('shortgoght.png'), description:'Modelos confortáveis e fáceis de combinar.', tips:[['Tamanho','36'],['Estilo','Confortável e versátil.']]},
-      {id:'relogiosPage', name:'Relógios', image:imageUrl('relogiogoght.png'), description:'Modelos delicados que complementam o visual.', tips:[['Preferência','Modelos delicados, clássicos ou minimalistas.']]}
+      {
+        id: 'blusasPage',
+        name: 'Blusas',
+        image: imageUrl('blusasgoght.png'),
+        description: 'Algumas referências de estilos que gosto.',
+        tips: [
+          ['Tamanho', 'M'],
+          ['Estilo', 'Delicado, casual e confortável.'],
+          ['O que evitar', 'Cores neon e roupas muito decotadas.']
+        ]
+      },
+      {
+        id: 'calcadosPage',
+        name: 'Calçados',
+        image: imageUrl('calcadosgoght.png'),
+        description: 'Modelos confortáveis para diferentes ocasiões.',
+        tips: [
+          ['Número', '36'],
+          ['Preferência', 'Tênis, sapatilhas e sandálias.']
+        ]
+      },
+      {
+        id: 'bolsasPage',
+        name: 'Bolsas',
+        image: imageUrl('bolsagoght.png'),
+        description: 'Modelos bonitos e práticos para o dia a dia.',
+        tips: [
+          ['Estilo', 'Delicado, clássico ou casual.'],
+          ['Cores', 'Preto, branco, marrom, tons claros ou neutros.']
+        ]
+      },
+      {
+        id: 'moletonsPage',
+        name: 'Moletons',
+        image: imageUrl('moletomgoght.png'),
+        description: 'Para aqueles dias em que conforto é prioridade.',
+        tips: [
+          ['Tamanho', 'M'],
+          ['Estilo', 'Confortável e soltinho.']
+        ]
+      },
+      {
+        id: 'casacosPage',
+        name: 'Casacos',
+        image: imageUrl('casacogoght.png'),
+        description: 'Opções quentinhas e confortáveis para completar o visual.',
+        tips: [
+          ['Tamanho', 'M'],
+          ['Estilo', 'Confortável, versátil e fácil de combinar.']
+        ]
+      },
+      {
+        id: 'cosmeticosPage',
+        name: 'Cosméticos',
+        image: imageUrl('cosmeticosgoght.png'),
+        description: 'Produtos de beleza e cuidados pessoais.',
+        tips: [
+          ['Preferências', 'Gloss, brilho labial, hidratantes, perfumes e cuidados pessoais.'],
+          ['Sugestão', 'Produtos versáteis também são ótimas opções.']
+        ]
+      },
+      {
+        id: 'calcasPage',
+        name: 'Calças',
+        image: imageUrl('calcagoght.png'),
+        description: 'Modelos versáteis para combinar com diferentes looks.',
+        tips: [
+          ['Tamanho', '36'],
+          ['Preferência', 'Modelos confortáveis para diferentes ocasiões.']
+        ]
+      },
+      {
+        id: 'livrosPage',
+        name: 'Livros',
+        image: imageUrl('livrosgoght.png'),
+        description: 'Uma história nova para me acompanhar.',
+        tips: [
+          ['Gêneros', 'Clássicos, romance, fantasia e ficção.'],
+          ['Preferência', 'Histórias envolventes e personagens marcantes.']
+        ]
+      },
+      {
+        id: 'vestidosPage',
+        name: 'Vestidos',
+        image: imageUrl('vestidogoght.png'),
+        description: 'Modelos delicados e confortáveis.',
+        tips: [
+          ['Tamanho', 'P'],
+          ['Estilo', 'Delicado, romântico e confortável.']
+        ]
+      },
+      {
+        id: 'vangoghPage',
+        name: 'Itens Van Gogh',
+        image: imageUrl('Vgoght.png'),
+        description: 'Um pouco de arte para trazer ao dia a dia.',
+        tips: [
+          ['Preferência', 'Itens inspirados nas obras e pinturas de Van Gogh.'],
+          ['Referência', 'A Noite Estrelada é uma das minhas favoritas.']
+        ]
+      },
+      {
+        id: 'shortsPage',
+        name: 'Shorts',
+        image: imageUrl('shortgoght.png'),
+        description: 'Modelos confortáveis e fáceis de combinar.',
+        tips: [
+          ['Tamanho', '36'],
+          ['Estilo', 'Confortável e versátil.']
+        ]
+      },
+      {
+        id: 'relogiosPage',
+        name: 'Relógios',
+        image: imageUrl('relogiogoght.png'),
+        description: 'Modelos delicados que complementam o visual.',
+        tips: [
+          ['Preferência', 'Modelos delicados, clássicos ou minimalistas.']
+        ]
+      }
     ];
 
     const giftSlots = {
@@ -225,11 +1024,22 @@
       bolsasPage: makeItems('bolsa', 10, 'Bolsa'),
       moletonsPage: makeItems('moletom', 8, 'Moletom'),
       casacosPage: makeItems('casaco', 9, 'Casaco'),
+
       cosmeticosPage: [
         ...makeItems('cosmeticos', 2, 'Cosmético'),
-        {name:'Cosmético 3', image:imageUrl('cometicos3.jpg'), filename:'cometicos3.jpg'},
-        ...makeItems('cosmeticos', 6, 'Cosmético').map((item, i) => ({...item, name:`Cosmético ${i+4}`, filename:`cosmeticos${i+4}.jpg`, image:imageUrl(`cosmeticos${i+4}.jpg`)}))
+        {
+          name: 'Cosmético 3',
+          image: imageUrl('cosmeticos3.jpg'),
+          filename: 'cosmeticos3.jpg'
+        },
+        ...makeItems('cosmeticos', 6, 'Cosmético').map((item, i) => ({
+          ...item,
+          name: `Cosmético ${i + 4}`,
+          filename: `cosmeticos${i + 4}.jpg`,
+          image: imageUrl(`cosmeticos${i + 4}.jpg`)
+        }))
       ],
+
       calcasPage: makeItems('calca', 11, 'Calça'),
       livrosPage: makeItems('livro', 11, 'Livro'),
       vestidosPage: makeItems('vestido', 8, 'Vestido'),
@@ -242,11 +1052,11 @@
 
     function escapeHtml(value) {
       return String(value).replace(/[&<>"']/g, c => ({
-        '&':'&amp;',
-        '<':'&lt;',
-        '>':'&gt;',
-        '"':'&quot;',
-        "'":'&#39;'
+        '&': '&amp;',
+        '<': '&lt;',
+        '>': '&gt;',
+        '"': '&quot;',
+        "'": '&#39;'
       }[c]));
     }
 
@@ -264,6 +1074,7 @@
 
     function pageMarkup(c) {
       const slots = giftSlots[c.id] || [];
+
       return `<section id="${c.id}" class="page" aria-labelledby="title-${c.id}"><button class="back-button" type="button" onclick="goHome()"><span aria-hidden="true">←</span> Voltar às categorias</button><header class="page-header"><div class="eyebrow">Sugestões para Eduarda</div><h2 id="title-${c.id}">${escapeHtml(c.name)}</h2><p>${escapeHtml(c.description)}</p></header>${tipsMarkup(c.tips)}<h3 class="section-label">Ideias de presentes</h3><div class="gifts">${slots.map(giftCard).join('')}</div></section>`;
     }
 
@@ -271,19 +1082,28 @@
       return `<section id="moreIdeasPage" class="page" aria-labelledby="title-more"><button class="back-button" type="button" onclick="goHome()"><span aria-hidden="true">←</span> Voltar às categorias</button><header class="page-header"><div class="eyebrow">Sugestões para Eduarda</div><h2 id="title-more">Mais ideias</h2><p>Outras sugestões para quem quiser escolher algo diferente.</p></header><p class="more-page-intro">Aqui ficam algumas ideias que não precisam pertencer a uma categoria específica.</p><div class="gifts">${moreIdeas.map(giftCard).join('')}</div></section>`;
     }
 
-    document.getElementById('categoriesGrid').innerHTML = categories.map(categoryCard).join('') +
+    document.getElementById('categoriesGrid').innerHTML =
+      categories.map(categoryCard).join('') +
       `<button class="category" type="button" onclick="openPix()" aria-label="Abrir opções de Pix"><span class="pix-symbol">PIX</span><span class="pix-name">Pix</span></button>`;
 
-    document.getElementById('pagesContainer').innerHTML = categories.map(pageMarkup).join('') + morePageMarkup();
+    document.getElementById('pagesContainer').innerHTML =
+      categories.map(pageMarkup).join('') + morePageMarkup();
 
     function openPage(pageId) {
-      document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+      document.querySelectorAll('.page').forEach(page => {
+        page.classList.remove('active');
+      });
+
       const page = document.getElementById(pageId);
       if (!page) return;
+
       page.classList.add('active');
+
       window.scrollTo({
         top: 0,
-        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth'
+        behavior: window.matchMedia('(prefers-reduced-motion: reduce)').matches
+          ? 'auto'
+          : 'smooth'
       });
     }
 
@@ -321,16 +1141,19 @@
         field.style.opacity = '0';
         document.body.appendChild(field);
         field.select();
+
         try {
           copied = document.execCommand('copy');
         } catch (err) {
           copied = false;
         }
+
         field.remove();
       }
 
       button.textContent = copied ? 'Chave copiada' : 'Copie a chave acima';
       button.classList.toggle('copied', copied);
+
       status.textContent = copied
         ? 'Chave Pix copiada.'
         : 'Não foi possível copiar automaticamente. Selecione a chave e copie manualmente.';
