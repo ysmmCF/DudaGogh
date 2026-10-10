@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -9,7 +10,6 @@
 <meta property="og:description" content="Sob o céu de uma Noite Estrelada, você é nosso convidado.">
 <meta property="og:image" content="https://ysmmcf.github.io/DudaGogh/logoDuda.png">
 <meta property="og:type" content="website">
-
 <title>Eduarda | 15 anos</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -58,9 +58,7 @@ button {
   -webkit-tap-highlight-color: transparent;
 }
 
-/* ==========================================
-   ENTRADA EM TELA CHEIA
-========================================== */
+/* ENTRADA EM TELA CHEIA */
 
 .entrance {
   position: fixed;
@@ -87,9 +85,7 @@ button {
   background: var(--blue-dark);
   transform: translateX(0);
   opacity: 1;
-  transition:
-    transform 1.35s cubic-bezier(.65, 0, .35, 1),
-    opacity 1s ease;
+  transition: transform 1.35s cubic-bezier(.65, 0, .35, 1), opacity 1s ease;
   will-change: transform, opacity;
 }
 
@@ -113,9 +109,7 @@ button {
   opacity: 1;
   transform: translateX(0);
   pointer-events: none;
-  transition:
-    transform 1.35s cubic-bezier(.65, 0, .35, 1),
-    opacity 1s ease;
+  transition: transform 1.35s cubic-bezier(.65, 0, .35, 1), opacity 1s ease;
   will-change: transform, opacity;
 }
 
@@ -186,9 +180,7 @@ button {
   text-transform: uppercase;
 }
 
-/* ==========================================
-   IMAGEM DO CONVITE
-========================================== */
+/* CONVITE */
 
 .invitation {
   position: relative;
@@ -212,9 +204,7 @@ button {
   -webkit-user-drag: none;
 }
 
-/* ==========================================
-   CONTAGEM REGRESSIVA
-========================================== */
+/* CONTAGEM REGRESSIVA */
 
 .countdown {
   position: absolute;
@@ -238,8 +228,6 @@ button {
   justify-items: center;
   width: 100%;
   height: 100%;
-  column-gap: 0;
-  row-gap: 0;
 }
 
 .time-unit {
@@ -248,12 +236,10 @@ button {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0;
   width: 100%;
   height: 100%;
   min-width: 0;
   min-height: 0;
-  padding: 0;
 }
 
 .time-unit:not(:last-child)::after {
@@ -263,12 +249,7 @@ button {
   top: 25%;
   height: 50%;
   width: 1px;
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    #e5c94d65,
-    transparent
-  );
+  background: linear-gradient(to bottom, transparent, #e5c94d65, transparent);
 }
 
 .time-number {
@@ -278,14 +259,10 @@ button {
   color: #f8e9a1;
   font-family: 'Cormorant Garamond', serif;
   font-weight: 600;
-  font-style: normal;
   line-height: .95;
-  letter-spacing: 0;
   font-variant-numeric: tabular-nums;
   font-feature-settings: "tnum";
-  text-shadow:
-    0 1px 2px #06152c80,
-    0 2px 12px #e5c94d40;
+  text-shadow: 0 1px 2px #06152c80, 0 2px 12px #e5c94d40;
   white-space: nowrap;
 }
 
@@ -313,9 +290,7 @@ button {
   text-align: center;
 }
 
-/* ==========================================
-   BOTÕES DO CONVITE
-========================================== */
+/* BOTÕES */
 
 .interactive-buttons {
   position: absolute;
@@ -339,12 +314,7 @@ button {
   padding: 10px 12px;
   border: 1px solid #d9bd4e;
   border-radius: 11px;
-  background: linear-gradient(
-    135deg,
-    #173b7b 0%,
-    #102d68 55%,
-    #0a204c 100%
-  );
+  background: linear-gradient(135deg, #173b7b 0%, #102d68 55%, #0a204c 100%);
   color: var(--gold-light);
   font-family: 'Cormorant Garamond', serif;
   font-size: clamp(19px, 5vw, 23px);
@@ -354,14 +324,8 @@ button {
   text-align: center;
   cursor: pointer;
   text-decoration: none;
-  box-shadow:
-    0 3px 9px #06152c30,
-    inset 0 1px 0 #ffffff12,
-    inset 0 0 0 1px #e5c94d10;
-  transition:
-    border-color .2s ease,
-    box-shadow .2s ease,
-    background .2s ease;
+  box-shadow: 0 3px 9px #06152c30, inset 0 1px 0 #ffffff12, inset 0 0 0 1px #e5c94d10;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
   -webkit-tap-highlight-color: transparent;
 }
 
@@ -378,9 +342,7 @@ button {
   filter: brightness(1.12);
 }
 
-/* ==========================================
-   CONTROLE DA MÚSICA
-========================================== */
+/* MÚSICA */
 
 .music-control {
   position: fixed;
@@ -402,15 +364,10 @@ button {
   font-weight: 400;
   letter-spacing: .6px;
   cursor: pointer;
-  box-shadow:
-    0 4px 18px #0004,
-    inset 0 0 0 2px #e5c94d18;
+  box-shadow: 0 4px 18px #0004, inset 0 0 0 2px #e5c94d18;
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
-  transition:
-    transform .2s ease,
-    border-color .2s ease,
-    box-shadow .2s ease;
+  transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
 }
 
 .music-control::before {
@@ -463,9 +420,7 @@ button {
   height: 18px;
 }
 
-/* ==========================================
-   TELA INTERNA DOS BOTÕES
-========================================== */
+/* PÁGINAS INTERNAS */
 
 .page-overlay {
   position: fixed;
@@ -491,9 +446,7 @@ button {
   background: var(--blue-dark);
 }
 
-/* ==========================================
-   POP-UP DE CONFIRMAÇÃO
-========================================== */
+/* POP-UP DE CONFIRMAÇÃO */
 
 .rsvp-overlay {
   position: fixed;
@@ -502,20 +455,14 @@ button {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding:
-    max(20px, env(safe-area-inset-top, 0px))
-    max(20px, env(safe-area-inset-right, 0px))
-    max(20px, env(safe-area-inset-bottom, 0px))
-    max(20px, env(safe-area-inset-left, 0px));
+  padding: max(20px, env(safe-area-inset-top, 0px)) max(20px, env(safe-area-inset-right, 0px)) max(20px, env(safe-area-inset-bottom, 0px)) max(20px, env(safe-area-inset-left, 0px));
   background: #030b1ddd;
   backdrop-filter: blur(7px);
   -webkit-backdrop-filter: blur(7px);
   opacity: 0;
   visibility: hidden;
   pointer-events: none;
-  transition:
-    opacity .3s ease,
-    visibility .3s ease;
+  transition: opacity .3s ease, visibility .3s ease;
 }
 
 .rsvp-overlay.visible {
@@ -532,10 +479,7 @@ button {
   background: linear-gradient(145deg, #15366f 0%, #091a3c 100%);
   border: 1px solid var(--gold);
   border-radius: 8px;
-  box-shadow:
-    0 18px 60px #0007,
-    inset 0 0 0 4px #e5c94d12,
-    inset 0 0 0 5px #e5c94d20;
+  box-shadow: 0 18px 60px #0007, inset 0 0 0 4px #e5c94d12, inset 0 0 0 5px #e5c94d20;
   text-align: center;
   transform: translateY(12px) scale(.98);
   transition: transform .3s ease;
@@ -552,12 +496,7 @@ button {
   left: 50%;
   width: 70px;
   height: 1px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--gold),
-    transparent
-  );
+  background: linear-gradient(to right, transparent, var(--gold), transparent);
   transform: translateX(-50%);
 }
 
@@ -616,9 +555,7 @@ button {
   letter-spacing: 1.2px;
   text-transform: uppercase;
   cursor: pointer;
-  box-shadow:
-    0 3px 12px #0003,
-    inset 0 1px 0 #fff8;
+  box-shadow: 0 3px 12px #0003, inset 0 1px 0 #fff8;
 }
 
 .rsvp-confirm:focus-visible,
@@ -626,10 +563,6 @@ button {
   outline: 2px solid var(--white);
   outline-offset: 3px;
 }
-
-/* ==========================================
-   COMPATIBILIDADE COM SAFARI / iOS
-========================================== */
 
 @supports (-webkit-touch-callout: none) {
   html {
@@ -650,10 +583,6 @@ button {
   }
 }
 
-/* ==========================================
-   TELAS ESTREITAS
-========================================== */
-
 @media (max-width: 350px) {
   .countdown {
     top: 72.5%;
@@ -665,12 +594,6 @@ button {
   .countdown-grid {
     grid-template-columns: repeat(4, minmax(0, 1fr));
     grid-template-rows: minmax(0, 1fr);
-    column-gap: 0;
-    row-gap: 0;
-  }
-
-  .time-unit {
-    padding: 0;
   }
 
   .time-number {
@@ -707,18 +630,9 @@ button {
   }
 }
 
-/* ==========================================
-   ANIMAÇÕES E ACESSIBILIDADE
-========================================== */
-
 @keyframes gentlePulse {
-  0%, 100% {
-    opacity: .75;
-  }
-
-  50% {
-    opacity: 1;
-  }
+  0%, 100% { opacity: .75; }
+  50% { opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -735,106 +649,61 @@ button {
 
 <body>
 
-<!-- ENTRADA EM TELA CHEIA -->
-
+<!-- ENTRADA -->
 <section class="entrance" id="entrance" aria-label="Abrir convite">
-
   <div class="envelope-right">
-    <video
-      id="entranceVideo"
+    <video id="entranceVideo"
       src="https://ysmmcf.github.io/DudaGogh/Videovangogh.mp4"
-      autoplay
-      muted
-      loop
-      playsinline
-      preload="auto">
-    </video>
+      autoplay muted loop playsinline preload="auto"></video>
   </div>
 
-  <img
-    class="envelope-left"
+  <img class="envelope-left"
     src="https://ysmmcf.github.io/DudaGogh/Entradaesquerdatransparente.png"
-    alt=""
-  >
+    alt="">
 
-  <button
-    class="entrance-hitbox"
-    id="openInvitation"
-    type="button"
-    aria-label="Abrir o convite de Eduarda">
-  </button>
+  <button class="entrance-hitbox" id="openInvitation"
+    type="button" aria-label="Abrir o convite de Eduarda"></button>
 
   <div class="entrance-instruction">
     Eduarda
     <span class="entrance-subtitle">Toque para abrir o convite</span>
   </div>
-
 </section>
 
 <!-- MÚSICA -->
-
-<audio
-  id="backgroundMusic"
+<audio id="backgroundMusic"
   src="https://ysmmCF.github.io/DudaGogh/ytmp3free.cc_billy-joel-vienna-official-video-youtubemp3free.org.mp3"
-  loop
-  preload="auto">
-</audio>
+  loop preload="auto"></audio>
 
-<button
-  class="music-control"
-  id="musicControl"
-  type="button"
+<button class="music-control" id="musicControl" type="button"
   aria-label="Pausar música">
-
   <span class="music-icon" id="musicIcon" aria-hidden="true">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+      stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
       <path d="M9 18V5l12-2v13"></path>
       <circle cx="6" cy="18" r="3"></circle>
       <circle cx="18" cy="16" r="3"></circle>
     </svg>
   </span>
-
   <span id="musicLabel">Pausar música</span>
 </button>
 
-<!-- TELA INTERNA DOS BOTÕES -->
-
-<section
-  class="page-overlay"
-  id="pageOverlay"
-  aria-label="Informações da festa"
-  aria-hidden="true">
-
-  <iframe
-    class="page-frame"
-    id="pageFrame"
-    title="Informações da festa"
-    src="about:blank"
-    allow="autoplay"
-    loading="eager">
-  </iframe>
-
+<!-- PÁGINAS INTERNAS -->
+<section class="page-overlay" id="pageOverlay"
+  aria-label="Informações da festa" aria-hidden="true">
+  <iframe class="page-frame" id="pageFrame"
+    title="Informações da festa" src="about:blank"
+    allow="autoplay" loading="eager"></iframe>
 </section>
 
-<!-- POP-UP DE CONFIRMAÇÃO -->
-
-<section
-  class="rsvp-overlay"
-  id="rsvpOverlay"
-  role="dialog"
-  aria-modal="true"
-  aria-labelledby="rsvpMessage"
-  aria-hidden="true">
-
+<!-- POP-UP -->
+<section class="rsvp-overlay" id="rsvpOverlay" role="dialog"
+  aria-modal="true" aria-labelledby="rsvpMessage" aria-hidden="true">
   <div class="rsvp-modal">
-
-    <button
-      class="rsvp-close"
-      id="rsvpClose"
-      type="button"
+    <button class="rsvp-close" id="rsvpClose" type="button"
       aria-label="Fechar aviso">
-
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+        stroke-width="1.8" stroke-linecap="round">
         <path d="M6 6L18 18M18 6L6 18"></path>
       </svg>
     </button>
@@ -843,29 +712,327 @@ button {
       Por favor, confirmar presença até dia 15 de novembro.
     </p>
 
-    <button
-      class="rsvp-confirm"
-      id="rsvpConfirm"
-      type="button">
+    <button class="rsvp-confirm" id="rsvpConfirm" type="button">
       Entendi
     </button>
-
   </div>
 </section>
 
 <!-- CONVITE PRINCIPAL -->
-
 <main class="invitation" id="invitation">
-
-  <img
-    class="artwork"
+  <img class="artwork"
     src="https://ysmmcf.github.io/DudaGogh/Eduarda_20261009_154048_0000.jpg"
     alt="Convite de 15 anos de Eduarda inspirado na Noite Estrelada de Van Gogh"
-    fetchpriority="high"
-  >
-
-  <!-- CONTAGEM REGRESSIVA -->
+    fetchpriority="high">
 
   <section class="countdown" aria-label="Contagem regressiva">
+    <div class="countdown-grid" id="countdownGrid">
+      <div class="time-unit">
+        <span class="time-number" id="days">00</span>
+        <span class="time-label">Dias</span>
+      </div>
+      <div class="time-unit">
+        <span class="time-number" id="hours">00</span>
+        <span class="time-label">Horas</span>
+      </div>
+      <div class="time-unit">
+        <span class="time-number" id="minutes">00</span>
+        <span class="time-label">Minutos</span>
+      </div>
+      <div class="time-unit">
+        <span class="time-number" id="seconds">00</span>
+        <span class="time-label">Segundos</span>
+      </div>
+    </div>
+  </section>
 
-    <div class="countdown-grid" id="
+  <nav class="interactive-buttons" aria-label="Informações da festa">
+    <button class="invite-button" type="button" data-action="location">
+      Localização
+    </button>
+    <button class="invite-button" type="button" data-page="manualdoconvidado.html">
+      Manual do convidado
+    </button>
+    <button class="invite-button" type="button" data-page="sugestaodepresentes.html">
+      Sugestão de presentes
+    </button>
+    <button class="invite-button" type="button" data-page="Dresscode.html">
+      Dress code
+    </button>
+  </nav>
+</main>
+
+<script>
+/* ELEMENTOS */
+const entrance = document.getElementById('entrance');
+const openButton = document.getElementById('openInvitation');
+const entranceVideo = document.getElementById('entranceVideo');
+
+const music = document.getElementById('backgroundMusic');
+const musicControl = document.getElementById('musicControl');
+const musicIcon = document.getElementById('musicIcon');
+const musicLabel = document.getElementById('musicLabel');
+
+const pageOverlay = document.getElementById('pageOverlay');
+const pageFrame = document.getElementById('pageFrame');
+
+const rsvpOverlay = document.getElementById('rsvpOverlay');
+const rsvpClose = document.getElementById('rsvpClose');
+const rsvpConfirm = document.getElementById('rsvpConfirm');
+
+let opened = false;
+let previousFocusedElement = null;
+
+/* LINKS */
+const pageLinks = {
+  location: 'https://maps.app.goo.gl/9iZhmzBJd1iARd1u9?g_st=ac',
+  manual: 'https://ysmmcf.github.io/DudaGogh/convite/manualdoconvidado.html',
+  gifts: 'https://ysmmcf.github.io/DudaGogh/convite/sugestaodepresentes.html',
+  dresscode: 'https://ysmmcf.github.io/DudaGogh/convite/dresscode.html'
+};
+
+/* ABRIR O CONVITE */
+openButton.addEventListener('click', () => {
+  if (opened) return;
+  opened = true;
+
+  entrance.classList.add('opening');
+
+  music.volume = 0.65;
+
+  try {
+    const musicPromise = music.play();
+    if (musicPromise && typeof musicPromise.catch === 'function') {
+      musicPromise.catch(error => {
+        console.warn('A música não pôde ser iniciada automaticamente.', error);
+      });
+    }
+  } catch (error) {
+    console.warn('A música não pôde ser iniciada automaticamente.', error);
+  }
+
+  musicControl.classList.add('visible');
+  updateMusicControl();
+
+  window.setTimeout(() => {
+    entrance.classList.add('dismissed');
+    entranceVideo.pause();
+    entrance.style.display = 'none';
+    openRsvpPopup();
+  }, 1500);
+});
+
+/* CONTROLE DA MÚSICA */
+const musicNoteSvg = `
+  <svg viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="1.6"
+    stroke-linecap="round" stroke-linejoin="round"
+    aria-hidden="true">
+    <path d="M9 18V5l12-2v13"></path>
+    <circle cx="6" cy="18" r="3"></circle>
+    <circle cx="18" cy="16" r="3"></circle>
+  </svg>
+`;
+
+const pauseSvg = `
+  <svg viewBox="0 0 24 24" fill="none"
+    stroke="currentColor" stroke-width="1.8"
+    stroke-linecap="round" aria-hidden="true">
+    <path d="M9 5v14M15 5v14"></path>
+  </svg>
+`;
+
+function updateMusicControl() {
+  if (music.paused) {
+    musicIcon.innerHTML = musicNoteSvg;
+    musicLabel.textContent = 'Tocar música';
+    musicControl.setAttribute('aria-label', 'Tocar música');
+  } else {
+    musicIcon.innerHTML = pauseSvg;
+    musicLabel.textContent = 'Pausar música';
+    musicControl.setAttribute('aria-label', 'Pausar música');
+  }
+}
+
+musicControl.addEventListener('click', async () => {
+  if (music.paused) {
+    try {
+      await music.play();
+    } catch (error) {
+      console.warn('Não foi possível reproduzir a música.', error);
+    }
+  } else {
+    music.pause();
+  }
+  updateMusicControl();
+});
+
+music.addEventListener('play', updateMusicControl);
+music.addEventListener('pause', updateMusicControl);
+
+/* ABRIR PÁGINAS INTERNAS */
+function openInternalPage(url) {
+  pageOverlay.classList.add('visible');
+  pageOverlay.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+
+  /*
+    O convite principal não é recarregado.
+    A música continua no elemento de áudio original.
+  */
+  pageFrame.src = url;
+}
+
+/* LOCALIZAÇÃO */
+document.querySelector('[data-action="location"]')
+  .addEventListener('click', () => {
+    window.open(pageLinks.location, '_blank', 'noopener,noreferrer');
+  });
+
+/* BOTÕES INTERNOS */
+document.querySelectorAll('[data-page]').forEach(button => {
+  button.addEventListener('click', () => {
+    const pageName = button.dataset.page;
+    const pageUrl = new URL(pageName, window.location.href).href;
+    openInternalPage(pageUrl);
+  });
+});
+
+/* VOLTAR AO CONVITE */
+function closeInternalPage() {
+  if (!pageOverlay.classList.contains('visible')) return;
+
+  pageOverlay.classList.remove('visible');
+  pageOverlay.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+
+  /*
+    O iframe só é limpo depois de fechar.
+    A entrada não reaparece e a música não é reiniciada,
+    porque apenas a página interna é fechada.
+  */
+  pageFrame.src = 'about:blank';
+}
+
+/*
+  Detecta botões de retorno nas páginas carregadas no iframe.
+  Funciona com botões .back-button e também com botões/links
+  cujo texto indica "voltar ao convite".
+*/
+pageFrame.addEventListener('load', () => {
+  try {
+    const frameDocument = pageFrame.contentDocument;
+    if (!frameDocument) return;
+
+    const returnElements = frameDocument.querySelectorAll(
+      '.back-button, [data-back-to-invitation], a, button'
+    );
+
+    returnElements.forEach(element => {
+      if (element.dataset.invitationReturnBound === 'true') return;
+
+      const text = (element.textContent || '').trim().toLowerCase();
+      const isReturnButton =
+        element.matches('.back-button, [data-back-to-invitation]') ||
+        (
+          text.includes('voltar') &&
+          (text.includes('convite') || text.includes('início') || text.includes('inicio'))
+        );
+
+      if (!isReturnButton) return;
+
+      element.dataset.invitationReturnBound = 'true';
+
+      element.addEventListener('click', event => {
+        event.preventDefault();
+        event.stopPropagation();
+        closeInternalPage();
+      });
+    });
+  } catch (error) {
+    console.warn('Não foi possível configurar o retorno da página interna.', error);
+  }
+});
+
+/*
+  Também permite que uma página interna solicite o retorno
+  usando postMessage. A mensagem só é aceita quando vem
+  do iframe atual e da mesma origem.
+*/
+window.addEventListener('message', event => {
+  if (event.origin !== window.location.origin) return;
+  if (event.source !== pageFrame.contentWindow) return;
+
+  if (event.data?.type === 'DUDA_GOGH_CLOSE_INTERNAL_PAGE') {
+    closeInternalPage();
+  }
+});
+
+/* POP-UP DE CONFIRMAÇÃO */
+function openRsvpPopup() {
+  previousFocusedElement = document.activeElement;
+  rsvpOverlay.classList.add('visible');
+  rsvpOverlay.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+
+  window.setTimeout(() => {
+    rsvpConfirm.focus({ preventScroll: true });
+  }, 100);
+}
+
+function closeRsvpPopup() {
+  rsvpOverlay.classList.remove('visible');
+  rsvpOverlay.setAttribute('aria-hidden', 'true');
+  document.body.classList.remove('modal-open');
+
+  if (
+    previousFocusedElement &&
+    typeof previousFocusedElement.focus === 'function'
+  ) {
+    previousFocusedElement.focus({ preventScroll: true });
+  }
+}
+
+rsvpClose.addEventListener('click', closeRsvpPopup);
+rsvpConfirm.addEventListener('click', closeRsvpPopup);
+
+document.addEventListener('keydown', event => {
+  if (event.key === 'Escape' && rsvpOverlay.classList.contains('visible')) {
+    closeRsvpPopup();
+  }
+
+  if (event.key === 'Escape' && pageOverlay.classList.contains('visible')) {
+    closeInternalPage();
+  }
+});
+
+/* CONTAGEM REGRESSIVA — 10/12/2026 ÀS 19H, HORÁRIO DE BRASÍLIA */
+const eventDate = new Date('2026-12-10T19:00:00-03:00').getTime();
+const countdownGrid = document.getElementById('countdownGrid');
+
+function updateCountdown() {
+  const remaining = eventDate - Date.now();
+
+  if (remaining <= 0) {
+    countdownGrid.innerHTML =
+      '<p class="countdown-finished">A nossa noite chegou!</p>';
+    return;
+  }
+
+  const days = Math.floor(remaining / 86400000);
+  const hours = Math.floor((remaining % 86400000) / 3600000);
+  const minutes = Math.floor((remaining % 3600000) / 60000);
+  const seconds = Math.floor((remaining % 60000) / 1000);
+
+  document.getElementById('days').textContent = String(days).padStart(2, '0');
+  document.getElementById('hours').textContent = String(hours).padStart(2, '0');
+  document.getElementById('minutes').textContent = String(minutes).padStart(2, '0');
+  document.getElementById('seconds').textContent = String(seconds).padStart(2, '0');
+}
+
+updateCountdown();
+window.setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
