@@ -97,6 +97,9 @@
     </div>
   </div>
 
+  <a class="back-button" href="index.html">
+      ← Voltar ao convite
+    </a>
   <script>
     /*
       IMAGENS DAS CATEGORIAS: URLs fornecidas no HTML de referência.
@@ -161,6 +164,5 @@
     async function copyPix(){const pix='220.906.587-97';const button=document.getElementById('copyButton');const status=document.getElementById('copyStatus');let copied=false;try{await navigator.clipboard.writeText(pix);copied=true;}catch(e){const field=document.createElement('textarea');field.value=pix;field.setAttribute('readonly','');field.style.position='fixed';field.style.opacity='0';document.body.appendChild(field);field.select();try{copied=document.execCommand('copy');}catch(err){copied=false;}field.remove();}button.textContent=copied?'Chave copiada':'Copie a chave acima';button.classList.toggle('copied',copied);status.textContent=copied?'Chave Pix copiada.':'Não foi possível copiar automaticamente. Selecione a chave e copie manualmente.';window.setTimeout(()=>{button.textContent='Copiar chave';button.classList.remove('copied');},2500);}
     document.getElementById('pixOverlay').addEventListener('click',event=>{if(event.target.id==='pixOverlay')closePix();});
     document.addEventListener('keydown',event=>{if(event.key==='Escape')closePix();if(event.key==='BrowserBack'||event.key==='Backspace'){if(document.querySelector('.page.active')?.id!=='homePage')goHome();}});
-  </script>
-</body>
+  </body>
 </html>
