@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#080d22">
+  <title>Manual do Convidado | Eduarda 15 Anos</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      min-height: 100%;
+      background: #080d22;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      min-height: 100dvh;
+      overflow: hidden;
+    }
+
+    .page {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background: #080d22;
+    }
+
+    .background-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .back-button {
+      position: absolute;
+      z-index: 2;
+      bottom: max(22px, env(safe-area-inset-bottom));
+      left: 50%;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 25px;
+      border: 1px solid rgba(243, 229, 171, 0.75);
+      border-radius: 30px;
+      background: rgba(8, 13, 34, 0.92);
+      color: #f3e5ab;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .back-button:active {
+      transform: translateX(-50%) scale(0.97);
+      background: rgba(22, 34, 77, 0.98);
+    }
+  </style>
+</head>
+
+<body>
+  <main class="page">
+    <img
+      class="background-image"
+      src="https://ysmmcf.github.io/DudaGogh/manualdoconvidado.jpg"
+      alt="Manual do convidado da festa de 15 anos da Eduarda"
+    >
+
+    <a class="back-button" href="index.html">
+      ← Voltar ao convite
+    </a>
+  </main>
+</body>
+</html>

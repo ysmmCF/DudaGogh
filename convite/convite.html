@@ -1,0 +1,1279 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#102d68">
+<meta name="description" content="Eduarda — 15 anos. Sob o céu de uma Noite Estrelada.">
+<meta property="og:title" content="Eduarda — 15 anos">
+<meta property="og:description" content="Sob o céu de uma Noite Estrelada, você é nosso convidado.">
+<meta property="og:image" content="https://ysmmcf.github.io/DudaGogh/logoDuda.png">
+<meta property="og:type" content="website">
+
+<title>Eduarda | 15 anos</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+:root {
+  --blue: #102d68;
+  --blue-dark: #071a40;
+  --gold: #e5c94d;
+  --gold-light: #f5e8a0;
+  --white: #fffbea;
+}
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  min-height: 100%;
+  background: var(--blue);
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  background: var(--blue);
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+button {
+  font: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* ==========================================
+   ENTRADA EM TELA CHEIA
+========================================== */
+
+.entrance {
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  overflow: hidden;
+  background: var(--blue-dark);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+  transition: opacity 1s ease, visibility 1s ease;
+}
+
+.envelope-right {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: var(--blue-dark);
+  transform: translateX(0);
+  opacity: 1;
+  transition:
+    transform 1.35s cubic-bezier(.65, 0, .35, 1),
+    opacity 1s ease;
+  will-change: transform, opacity;
+}
+
+.envelope-right video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.envelope-left {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  object-position: center;
+  opacity: 1;
+  transform: translateX(0);
+  pointer-events: none;
+  transition:
+    transform 1.35s cubic-bezier(.65, 0, .35, 1),
+    opacity 1s ease;
+  will-change: transform, opacity;
+}
+
+.entrance.opening .envelope-left {
+  transform: translateX(-100%);
+  opacity: 0;
+}
+
+.entrance.opening .envelope-right {
+  transform: translateX(100%);
+  opacity: 0;
+}
+
+.entrance.dismissed {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.entrance-hitbox {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  display: block;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  pointer-events: auto;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.entrance-hitbox:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: -8px;
+}
+
+.entrance-instruction {
+  position: absolute;
+  z-index: 11;
+  left: 0;
+  right: 0;
+  bottom: max(8%, env(safe-area-inset-bottom, 0px));
+  padding: 12px;
+  color: var(--gold-light);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(25px, 7vw, 34px);
+  font-weight: 400;
+  text-align: center;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 14px #06152c;
+  pointer-events: none;
+  animation: gentlePulse 2.8s ease-in-out infinite;
+}
+
+.entrance-subtitle {
+  display: block;
+  margin-top: 7px;
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 9px;
+  font-weight: 300;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* ==========================================
+   IMAGEM DO CONVITE
+========================================== */
+
+.invitation {
+  position: relative;
+  isolation: isolate;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto;
+  overflow: hidden;
+  background: var(--blue);
+  box-shadow: 0 0 40px #06152c30;
+}
+
+.artwork {
+  display: block;
+  position: relative;
+  z-index: 0;
+  width: 100%;
+  height: auto;
+  border: 0;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+/* ==========================================
+   CONTAGEM REGRESSIVA
+========================================== */
+
+.countdown {
+  position: absolute;
+  z-index: 2;
+  top: 72.5%;
+  left: 9%;
+  width: 82%;
+  height: 10%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--gold-light);
+  text-align: center;
+}
+
+.countdown-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-rows: minmax(0, 1fr);
+  align-items: center;
+  justify-items: center;
+  width: 100%;
+  height: 100%;
+  column-gap: 0;
+  row-gap: 0;
+}
+
+.time-unit {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  width: 100%;
+  height: 100%;
+  min-width: 0;
+  min-height: 0;
+  padding: 0;
+}
+
+.time-unit:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 25%;
+  height: 50%;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #e5c94d65,
+    transparent
+  );
+}
+
+.time-number {
+  display: block;
+  width: 100%;
+  font-size: clamp(38px, 12vw, 56px);
+  color: #f8e9a1;
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  font-style: normal;
+  line-height: .95;
+  letter-spacing: 0;
+  font-variant-numeric: tabular-nums;
+  font-feature-settings: "tnum";
+  text-shadow:
+    0 1px 2px #06152c80,
+    0 2px 12px #e5c94d40;
+  white-space: nowrap;
+}
+
+.time-label {
+  display: block;
+  width: 100%;
+  margin-top: 5px;
+  color: var(--white);
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(7px, 1.9vw, 9px);
+  font-weight: 400;
+  letter-spacing: .3px;
+  text-transform: uppercase;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.countdown-finished {
+  grid-column: 1 / -1;
+  align-self: center;
+  width: 100%;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(25px, 7vw, 36px);
+  color: var(--gold-light);
+  text-align: center;
+}
+
+/* ==========================================
+   BOTÕES DO CONVITE
+========================================== */
+
+.interactive-buttons {
+  position: absolute;
+  z-index: 2;
+  top: 90.8%;
+  left: 8%;
+  width: 84%;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: clamp(13px, 3vw, 18px);
+}
+
+.invite-button {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  min-height: 42px;
+  padding: 10px 12px;
+  border: 1px solid #d9bd4e;
+  border-radius: 11px;
+  background: linear-gradient(
+    135deg,
+    #173b7b 0%,
+    #102d68 55%,
+    #0a204c 100%
+  );
+  color: var(--gold-light);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(19px, 5vw, 23px);
+  font-weight: 500;
+  letter-spacing: .4px;
+  line-height: 1.15;
+  text-align: center;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow:
+    0 3px 9px #06152c30,
+    inset 0 1px 0 #ffffff12,
+    inset 0 0 0 1px #e5c94d10;
+  transition:
+    border-color .2s ease,
+    box-shadow .2s ease,
+    background .2s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.invite-button::before {
+  content: "";
+  position: absolute;
+  inset: 3px;
+  border: 1px solid #e5c94d22;
+  border-radius: 7px;
+  pointer-events: none;
+}
+
+.invite-button:active {
+  filter: brightness(1.12);
+}
+
+/* ==========================================
+   CONTROLE DA MÚSICA
+========================================== */
+
+.music-control {
+  position: fixed;
+  z-index: 30;
+  right: max(14px, env(safe-area-inset-right, 0px));
+  bottom: max(16px, env(safe-area-inset-bottom, 0px));
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 9px;
+  min-height: 46px;
+  padding: 10px 17px;
+  border: 1px solid var(--gold);
+  border-radius: 30px;
+  background: linear-gradient(135deg, #173b7b 0%, #071a40 100%);
+  color: var(--gold-light);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: .6px;
+  cursor: pointer;
+  box-shadow:
+    0 4px 18px #0004,
+    inset 0 0 0 2px #e5c94d18;
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition:
+    transform .2s ease,
+    border-color .2s ease,
+    box-shadow .2s ease;
+}
+
+.music-control::before {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid #e5c94d50;
+  border-radius: 24px;
+  pointer-events: none;
+}
+
+.music-control::after {
+  content: "";
+  position: absolute;
+  top: -3px;
+  left: 50%;
+  width: 5px;
+  height: 5px;
+  background: var(--gold-light);
+  border: 1px solid var(--blue-dark);
+  transform: translateX(-50%) rotate(45deg);
+}
+
+.music-control.visible {
+  display: flex;
+}
+
+.music-control:active {
+  transform: scale(.97);
+}
+
+.music-control:focus-visible {
+  outline: 2px solid var(--gold-light);
+  outline-offset: 4px;
+}
+
+.music-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 19px;
+  height: 19px;
+  color: var(--gold);
+  flex-shrink: 0;
+}
+
+.music-icon svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+/* ==========================================
+   TELA INTERNA DOS BOTÕES
+========================================== */
+
+.page-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 1500;
+  display: none;
+  width: 100%;
+  height: 100%;
+  height: 100dvh;
+  background: var(--blue-dark);
+  overflow: hidden;
+}
+
+.page-overlay.visible {
+  display: block;
+}
+
+.page-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: var(--blue-dark);
+}
+
+/* ==========================================
+   POP-UP DE CONFIRMAÇÃO
+========================================== */
+
+.rsvp-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding:
+    max(20px, env(safe-area-inset-top, 0px))
+    max(20px, env(safe-area-inset-right, 0px))
+    max(20px, env(safe-area-inset-bottom, 0px))
+    max(20px, env(safe-area-inset-left, 0px));
+  background: #030b1ddd;
+  backdrop-filter: blur(7px);
+  -webkit-backdrop-filter: blur(7px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition:
+    opacity .3s ease,
+    visibility .3s ease;
+}
+
+.rsvp-overlay.visible {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
+
+.rsvp-modal {
+  position: relative;
+  width: 100%;
+  max-width: 350px;
+  padding: 34px 25px 25px;
+  background: linear-gradient(145deg, #15366f 0%, #091a3c 100%);
+  border: 1px solid var(--gold);
+  border-radius: 8px;
+  box-shadow:
+    0 18px 60px #0007,
+    inset 0 0 0 4px #e5c94d12,
+    inset 0 0 0 5px #e5c94d20;
+  text-align: center;
+  transform: translateY(12px) scale(.98);
+  transition: transform .3s ease;
+}
+
+.rsvp-overlay.visible .rsvp-modal {
+  transform: translateY(0) scale(1);
+}
+
+.rsvp-modal::before,
+.rsvp-modal::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: 70px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--gold),
+    transparent
+  );
+  transform: translateX(-50%);
+}
+
+.rsvp-modal::before {
+  top: 15px;
+}
+
+.rsvp-modal::after {
+  bottom: 14px;
+}
+
+.rsvp-close {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #e5c94d80;
+  border-radius: 50%;
+  background: #071a40;
+  color: var(--gold-light);
+  cursor: pointer;
+}
+
+.rsvp-close svg {
+  width: 13px;
+  height: 13px;
+}
+
+.rsvp-message {
+  max-width: 270px;
+  margin: 10px auto 25px;
+  color: var(--white);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(23px, 6vw, 28px);
+  font-weight: 500;
+  line-height: 1.35;
+  letter-spacing: .2px;
+}
+
+.rsvp-confirm {
+  display: block;
+  width: 100%;
+  min-height: 44px;
+  padding: 11px 18px;
+  border: 1px solid var(--gold-light);
+  border-radius: 6px;
+  background: linear-gradient(135deg, #f5e8a0 0%, #e5c94d 100%);
+  color: #102d68;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1.2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  box-shadow:
+    0 3px 12px #0003,
+    inset 0 1px 0 #fff8;
+}
+
+.rsvp-confirm:focus-visible,
+.rsvp-close:focus-visible {
+  outline: 2px solid var(--white);
+  outline-offset: 3px;
+}
+
+/* ==========================================
+   COMPATIBILIDADE COM SAFARI / iOS
+========================================== */
+
+@supports (-webkit-touch-callout: none) {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  .invitation {
+    transform: translateZ(0);
+  }
+
+  .countdown,
+  .interactive-buttons {
+    -webkit-transform: translateZ(0);
+  }
+
+  .music-control {
+    bottom: max(16px, env(safe-area-inset-bottom, 0px));
+  }
+}
+
+/* ==========================================
+   TELAS ESTREITAS
+========================================== */
+
+@media (max-width: 350px) {
+  .countdown {
+    top: 72.5%;
+    left: 7%;
+    width: 86%;
+    height: 9%;
+  }
+
+  .countdown-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    grid-template-rows: minmax(0, 1fr);
+    column-gap: 0;
+    row-gap: 0;
+  }
+
+  .time-unit {
+    padding: 0;
+  }
+
+  .time-number {
+    font-size: clamp(34px, 10vw, 42px);
+    letter-spacing: 0;
+  }
+
+  .time-label {
+    font-size: 7px;
+    letter-spacing: 0;
+    margin-top: 5px;
+  }
+
+  .interactive-buttons {
+    top: 90.8%;
+    left: 6%;
+    width: 88%;
+    gap: 12px;
+  }
+
+  .invite-button {
+    min-height: 40px;
+    padding: 9px 8px;
+    font-size: 18px;
+    border-radius: 9px;
+  }
+
+  .rsvp-modal {
+    padding: 32px 20px 24px;
+  }
+
+  .rsvp-message {
+    font-size: 23px;
+  }
+}
+
+/* ==========================================
+   ANIMAÇÕES E ACESSIBILIDADE
+========================================== */
+
+@keyframes gentlePulse {
+  0%, 100% {
+    opacity: .75;
+  }
+
+  50% {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<!-- ENTRADA EM TELA CHEIA -->
+
+<section class="entrance" id="entrance" aria-label="Abrir convite">
+
+  <div class="envelope-right">
+    <video
+      id="entranceVideo"
+      src="https://ysmmcf.github.io/DudaGogh/Videovangogh.mp4"
+      autoplay
+      muted
+      loop
+      playsinline
+      preload="auto">
+    </video>
+  </div>
+
+  <img
+    class="envelope-left"
+    src="https://ysmmcf.github.io/DudaGogh/Entradaesquerdatransparente.png"
+    alt=""
+  >
+
+  <button
+    class="entrance-hitbox"
+    id="openInvitation"
+    type="button"
+    aria-label="Abrir o convite de Eduarda">
+  </button>
+
+  <div class="entrance-instruction">
+    Eduarda
+    <span class="entrance-subtitle">Toque para abrir o convite</span>
+  </div>
+
+</section>
+
+<!-- MÚSICA -->
+
+<audio
+  id="backgroundMusic"
+  src="https://ysmmCF.github.io/DudaGogh/ytmp3free.cc_billy-joel-vienna-official-video-youtubemp3free.org.mp3"
+  loop
+  preload="auto">
+</audio>
+
+<button
+  class="music-control"
+  id="musicControl"
+  type="button"
+  aria-label="Pausar música">
+
+  <span class="music-icon" id="musicIcon" aria-hidden="true">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+      <path d="M9 18V5l12-2v13"></path>
+      <circle cx="6" cy="18" r="3"></circle>
+      <circle cx="18" cy="16" r="3"></circle>
+    </svg>
+  </span>
+
+  <span id="musicLabel">Pausar música</span>
+</button>
+
+<!-- TELA INTERNA DOS BOTÕES -->
+
+<section
+  class="page-overlay"
+  id="pageOverlay"
+  aria-label="Informações da festa"
+  aria-hidden="true">
+
+  <iframe
+    class="page-frame"
+    id="pageFrame"
+    title="Informações da festa"
+    src="about:blank"
+    allow="autoplay"
+    loading="eager">
+  </iframe>
+
+</section>
+
+<!-- POP-UP DE CONFIRMAÇÃO -->
+
+<section
+  class="rsvp-overlay"
+  id="rsvpOverlay"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="rsvpMessage"
+  aria-hidden="true">
+
+  <div class="rsvp-modal">
+
+    <button
+      class="rsvp-close"
+      id="rsvpClose"
+      type="button"
+      aria-label="Fechar aviso">
+
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+        <path d="M6 6L18 18M18 6L6 18"></path>
+      </svg>
+    </button>
+
+    <p class="rsvp-message" id="rsvpMessage">
+      Por favor, confirmar presença até dia 15 de novembro.
+    </p>
+
+    <button
+      class="rsvp-confirm"
+      id="rsvpConfirm"
+      type="button">
+      Entendi
+    </button>
+
+  </div>
+</section>
+
+<!-- CONVITE PRINCIPAL -->
+
+<main class="invitation" id="invitation">
+
+  <img
+    class="artwork"
+    src="https://ysmmcf.github.io/DudaGogh/Eduarda_20261009_154048_0000.jpg"
+    alt="Convite de 15 anos de Eduarda inspirado na Noite Estrelada de Van Gogh"
+    fetchpriority="high"
+  >
+
+  <!-- CONTAGEM REGRESSIVA -->
+
+  <section class="countdown" aria-label="Contagem regressiva">
+
+    <div class="countdown-grid" id="countdownGrid">
+
+      <div class="time-unit">
+        <span class="time-number" id="days">00</span>
+        <span class="time-label">Dias</span>
+      </div>
+
+      <div class="time-unit">
+        <span class="time-number" id="hours">00</span>
+        <span class="time-label">Horas</span>
+      </div>
+
+      <div class="time-unit">
+        <span class="time-number" id="minutes">00</span>
+        <span class="time-label">Minutos</span>
+      </div>
+
+      <div class="time-unit">
+        <span class="time-number" id="seconds">00</span>
+        <span class="time-label">Segundos</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- BOTÕES FUNCIONAIS -->
+
+  <nav class="interactive-buttons" aria-label="Informações da festa">
+
+    <button
+      class="invite-button"
+      type="button"
+      data-action="location">
+      Localização
+    </button>
+
+    <button
+      class="invite-button"
+      type="button"
+      data-page="manualdoconvidado.html">
+      Manual do convidado
+    </button>
+
+    <button
+      class="invite-button"
+      type="button"
+      data-page="sugestaodepresentes.html">
+      Sugestão de presentes
+    </button>
+
+    <button
+      class="invite-button"
+      type="button"
+      data-page="Dresscode.html">
+      Dress code
+    </button>
+
+  </nav>
+
+</main>
+
+<script>
+/* ==========================================
+   ELEMENTOS PRINCIPAIS
+========================================== */
+
+const entrance = document.getElementById('entrance');
+const openButton = document.getElementById('openInvitation');
+const entranceVideo = document.getElementById('entranceVideo');
+
+const music = document.getElementById('backgroundMusic');
+const musicControl = document.getElementById('musicControl');
+const musicIcon = document.getElementById('musicIcon');
+const musicLabel = document.getElementById('musicLabel');
+
+const pageOverlay = document.getElementById('pageOverlay');
+const pageFrame = document.getElementById('pageFrame');
+
+const rsvpOverlay = document.getElementById('rsvpOverlay');
+const rsvpClose = document.getElementById('rsvpClose');
+const rsvpConfirm = document.getElementById('rsvpConfirm');
+
+let opened = false;
+let previousFocusedElement = null;
+
+/* ==========================================
+   ENDEREÇOS DOS BOTÕES
+========================================== */
+
+const pageLinks = {
+  location:
+    'https://maps.app.goo.gl/9iZhmzBJd1iARd1u9?g_st=ac',
+
+  manual:
+    'https://ysmmcf.github.io/DudaGogh/manualdoconvidado.html',
+
+  gifts:
+    'https://ysmmcf.github.io/DudaGogh/sugestaodepresentes.html',
+
+  dresscode:
+    'https://ysmmcf.github.io/DudaGogh/Dresscode.html'
+};
+
+/* ==========================================
+   ABERTURA DO CONVITE
+========================================== */
+
+openButton.addEventListener('click', () => {
+  if (opened) return;
+
+  opened = true;
+
+  entrance.classList.add('opening');
+
+  music.volume = 0.65;
+
+  try {
+    const musicPromise = music.play();
+
+    if (musicPromise && typeof musicPromise.catch === 'function') {
+      musicPromise.catch((error) => {
+        console.warn(
+          'A música não pôde ser iniciada automaticamente.',
+          error
+        );
+      });
+    }
+  } catch (error) {
+    console.warn(
+      'A música não pôde ser iniciada automaticamente.',
+      error
+    );
+  }
+
+  musicControl.classList.add('visible');
+  updateMusicControl();
+
+  window.setTimeout(() => {
+    entrance.classList.add('dismissed');
+    entranceVideo.pause();
+    entrance.style.display = 'none';
+    openRsvpPopup();
+  }, 1500);
+});
+
+/* ==========================================
+   CONTROLE DA MÚSICA
+========================================== */
+
+const musicNoteSvg = `
+  <svg viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="1.6"
+       stroke-linecap="round" stroke-linejoin="round"
+       aria-hidden="true">
+    <path d="M9 18V5l12-2v13"></path>
+    <circle cx="6" cy="18" r="3"></circle>
+    <circle cx="18" cy="16" r="3"></circle>
+  </svg>
+`;
+
+const pauseSvg = `
+  <svg viewBox="0 0 24 24" fill="none"
+       stroke="currentColor" stroke-width="1.8"
+       stroke-linecap="round" aria-hidden="true">
+    <path d="M9 5v14M15 5v14"></path>
+  </svg>
+`;
+
+function updateMusicControl() {
+  if (music.paused) {
+    musicIcon.innerHTML = musicNoteSvg;
+    musicLabel.textContent = 'Tocar música';
+
+    musicControl.setAttribute(
+      'aria-label',
+      'Tocar música'
+    );
+  } else {
+    musicIcon.innerHTML = pauseSvg;
+    musicLabel.textContent = 'Pausar música';
+
+    musicControl.setAttribute(
+      'aria-label',
+      'Pausar música'
+    );
+  }
+}
+
+musicControl.addEventListener('click', async () => {
+  if (music.paused) {
+    try {
+      await music.play();
+    } catch (error) {
+      console.warn(
+        'Não foi possível reproduzir a música.',
+        error
+      );
+    }
+  } else {
+    music.pause();
+  }
+
+  updateMusicControl();
+});
+
+music.addEventListener('play', updateMusicControl);
+music.addEventListener('pause', updateMusicControl);
+
+/* ==========================================
+   ABRIR AS PÁGINAS INTERNAS
+========================================== */
+
+function openInternalPage(url) {
+  pageOverlay.classList.add('visible');
+  pageOverlay.setAttribute('aria-hidden', 'false');
+  document.body.classList.add('modal-open');
+
+  /*
+    Carrega o HTML em um iframe.
+    A página principal não é recarregada,
+    portanto o áudio permanece no mesmo elemento.
+  */
+
+  pageFrame.src = url;
+}
+
+/* ==========================================
+   BOTÃO DE LOCALIZAÇÃO
+========================================== */
+
+document.querySelector('[data-action="location"]')
+  .addEventListener('click', () => {
+    window.open(
+      pageLinks.location,
+      '_blank',
+      'noopener,noreferrer'
+    );
+  });
+
+/* ==========================================
+   BOTÕES DAS OUTRAS PÁGINAS
+========================================== */
+
+document.querySelectorAll('[data-page]').forEach((button) => {
+  button.addEventListener('click', () => {
+    const pageName = button.dataset.page;
+
+    const pageUrl = new URL(
+      pageName,
+      window.location.href
+    ).href;
+
+    openInternalPage(pageUrl);
+  });
+});
+
+/* ==========================================
+   VOLTAR AO CONVITE
+========================================== */
+
+function closeInternalPage() {
+  pageOverlay.classList.remove('visible');
+  pageOverlay.setAttribute('aria-hidden', 'true');
+
+  /*
+    Limpa o iframe depois de escondê-lo.
+    Isso não interrompe a música, pois ela
+    pertence à página principal.
+  */
+
+  pageFrame.src = 'about:blank';
+
+  document.body.classList.remove('modal-open');
+}
+
+pageFrame.addEventListener('load', () => {
+  try {
+    const frameDocument = pageFrame.contentDocument;
+
+    if (!frameDocument) return;
+
+    frameDocument.querySelectorAll('.back-button').forEach((button) => {
+      button.addEventListener('click', (event) => {
+        event.preventDefault();
+        closeInternalPage();
+      });
+    });
+
+  } catch (error) {
+    console.warn(
+      'Não foi possível configurar o retorno da página interna.',
+      error
+    );
+  }
+});
+
+/* ==========================================
+   POP-UP DE CONFIRMAÇÃO
+========================================== */
+
+function openRsvpPopup() {
+  previousFocusedElement = document.activeElement;
+
+  rsvpOverlay.classList.add('visible');
+  rsvpOverlay.setAttribute('aria-hidden', 'false');
+
+  document.body.classList.add('modal-open');
+
+  window.setTimeout(() => {
+    rsvpConfirm.focus({ preventScroll: true });
+  }, 100);
+}
+
+function closeRsvpPopup() {
+  rsvpOverlay.classList.remove('visible');
+  rsvpOverlay.setAttribute('aria-hidden', 'true');
+
+  document.body.classList.remove('modal-open');
+
+  if (
+    previousFocusedElement &&
+    typeof previousFocusedElement.focus === 'function'
+  ) {
+    previousFocusedElement.focus({ preventScroll: true });
+  }
+}
+
+rsvpClose.addEventListener('click', closeRsvpPopup);
+rsvpConfirm.addEventListener('click', closeRsvpPopup);
+
+document.addEventListener('keydown', (event) => {
+  if (
+    event.key === 'Escape' &&
+    rsvpOverlay.classList.contains('visible')
+  ) {
+    closeRsvpPopup();
+  }
+
+  if (
+    event.key === 'Escape' &&
+    pageOverlay.classList.contains('visible')
+  ) {
+    closeInternalPage();
+  }
+});
+
+/* ==========================================
+   CONTAGEM REGRESSIVA
+   10/12/2026 às 19h — horário de Brasília
+========================================== */
+
+const eventDate = new Date(
+  '2026-12-10T19:00:00-03:00'
+).getTime();
+
+const countdownGrid = document.getElementById('countdownGrid');
+
+function updateCountdown() {
+  const remaining = eventDate - Date.now();
+
+  if (remaining <= 0) {
+    countdownGrid.innerHTML =
+      '<p class="countdown-finished">A nossa noite chegou!</p>';
+
+    return;
+  }
+
+  const days = Math.floor(
+    remaining / 86400000
+  );
+
+  const hours = Math.floor(
+    (remaining % 86400000) / 3600000
+  );
+
+  const minutes = Math.floor(
+    (remaining % 3600000) / 60000
+  );
+
+  const seconds = Math.floor(
+    (remaining % 60000) / 1000
+  );
+
+  /*
+    padStart(2) garante pelo menos dois dígitos,
+    sem acrescentar um zero extra aos dias.
+    Por exemplo: 60 dias aparece como 60, não 060.
+  */
+
+  document.getElementById('days').textContent =
+    String(days).padStart(2, '0');
+
+  document.getElementById('hours').textContent =
+    String(hours).padStart(2, '0');
+
+  document.getElementById('minutes').textContent =
+    String(minutes).padStart(2, '0');
+
+  document.getElementById('seconds').textContent =
+    String(seconds).padStart(2, '0');
+}
+
+updateCountdown();
+
+window.setInterval(updateCountdown, 1000);
+</script>
+
+</body>
+</html>
