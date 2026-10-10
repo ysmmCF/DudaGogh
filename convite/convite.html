@@ -921,7 +921,7 @@ button {
     <button
       class="invite-button"
       type="button"
-      data-page="Dresscode.html">
+      data-page="dresscode.html">
       Dress code
     </button>
 
@@ -1149,7 +1149,7 @@ pageFrame.addEventListener('load', () => {
 
     if (!frameDocument) return;
 
-    frameDocument.querySelectorAll('.back-button').forEach((button) => {
+    frameDocument.querySelectorAll('.back-to-invitation').forEach((button) => {
       button.addEventListener('click', (event) => {
         event.preventDefault();
         closeInternalPage();
