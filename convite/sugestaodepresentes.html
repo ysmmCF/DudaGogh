@@ -16,6 +16,56 @@
     @media(max-width:600px){.site{width:91%;padding:25px 0 48px}.topline{margin-bottom:21px;font-size:9px}.home-header{margin-bottom:27px}.home-header h1{font-size:45px}.home-header p{font-size:11px}.general-info{padding:20px 17px;margin-bottom:30px}.general-info h2{font-size:25px}.general-info p{font-size:11px}.categories{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.category{min-height:160px;padding:11px 8px}.category img{width:88px;height:84px}.category-name,.pix-name{font-size:19px}.pix-symbol{width:76px;height:76px;font-size:27px;margin-bottom:10px}.bottom-area{margin-top:28px}.primary-button{width:min(290px,100%);font-size:21px}.page-header{margin-bottom:23px}.page-header h2{font-size:42px}.page-header p{font-size:11px}.tips{padding:18px 18px;margin-bottom:24px}.tips p{font-size:11px}.gifts{gap:11px}.gift-image{height:165px;padding:8px}.gift-name{font-size:18px;min-height:59px;padding:9px}.gift-note{padding:0 9px 12px}.back-button{margin-bottom:22px}}
     @media(max-width:360px){.category{min-height:145px}.category img{width:76px;height:73px}.category-name,.pix-name{font-size:17px}.gift-image{height:145px}.gift-name{font-size:16px}.gifts{gap:8px}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}}
+
+    .page {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      height: 100dvh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow: hidden;
+      background: #080d22;
+    }
+
+    .background-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center;
+    }
+
+    .back-button {
+      position: absolute;
+      z-index: 2;
+      bottom: max(22px, env(safe-area-inset-bottom));
+      left: 50%;
+      transform: translateX(-50%);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 12px 25px;
+      border: 1px solid rgba(243, 229, 171, 0.75);
+      border-radius: 30px;
+      background: rgba(8, 13, 34, 0.92);
+      color: #f3e5ab;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      white-space: nowrap;
+      box-shadow: 0 4px 18px rgba(0, 0, 0, 0.3);
+      -webkit-tap-highlight-color: transparent;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .back-button:active {
+      transform: translateX(-50%) scale(0.97);
+      background: rgba(22, 34, 77, 0.98);
+    }
   </style>
 </head>
 <body>
